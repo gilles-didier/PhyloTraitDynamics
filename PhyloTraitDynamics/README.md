@@ -38,19 +38,19 @@ remotes::install_local("PhyloTraitDynamics")
 ### Arbres fixes
 
 ```r
-simulate_fixed_tree_brownian_realization()
-plot_fixed_tree_brownian_realization()
+fixed_tree_simulate_brownian_realization()
+fixed_tree_plot_brownian_realization()
 
-fixed_tree_theoretical_summary()
-plot_fixed_tree_theoretical_summary()
+fixed_tree_compute_theoretical_summary()
+fixed_tree_plot_theoretical_summary()
 ```
 
 ### MRCA
 
 ```r
-mrca_age_distribution()
-mrca_age_distribution_dynamics()
-plot_mrca_age_distribution_dynamics()
+mrca_age_compute_distribution()
+mrca_age_compute_dynamics()
+mrca_age_plot_dynamics()
 ```
 
 ### Espérance de la variance empirique
@@ -157,4 +157,4 @@ plot(th_mean$time, th_mean$empirical_mean_variance, type = "l")
 
 Le package expose les calculs des scripts initiaux. Il ne tente pas encore de factoriser les duplications entre scripts, ni de transformer le code en bibliothèque générale.
 
-En particulier, `fixed_tree_theoretical_summary()` reprend la sortie de `compute_emp_mean_var_timeseries_general()` pour la variance de la moyenne empirique, sans modifier le calcul interne.
+En particulier, `fixed_tree_compute_theoretical_summary()` reprend la sortie de `compute_emp_mean_var_timeseries_general()` pour la variance de la moyenne empirique, sans modifier le calcul interne.

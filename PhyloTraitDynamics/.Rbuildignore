@@ -2,3 +2,4 @@
 ^\.agents$
 ^\.codex$
 ^.*\.Rcheck$
+^PhyloTraitDynamics-manual.*[.]pdf$

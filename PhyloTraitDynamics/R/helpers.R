@@ -6,8 +6,9 @@
 #' @keywords internal
 #' @importFrom CompQuadForm davies
 #' @importFrom graphics axis legend lines matlines mtext par plot polygon
-#' @importFrom grDevices adjustcolor
-#' @importFrom stats var
+#' @importFrom grDevices adjustcolor rgb
+#' @importFrom stats approx setNames var
+#' @importFrom utils head tail
 "_PACKAGE"
 
 .bd_original_envs <- new.env(parent = emptyenv())
