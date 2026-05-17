@@ -6,7 +6,7 @@
 \alias{PhyloTraitDynamics-package}
 \title{PhyloTraitDynamics: Companion Code for Phylogenetic Trait Dynamics}
 \description{
-Conservative companion package for reproducing numerical results and figures for an article on birth-death processes, MRCA ages, and Brownian empirical moments on phylogenies. The package exposes a small public API and keeps the original scripts in inst/scripts/original.
+Conservative companion package for reproducing numerical results and figures for an article on birth-death processes, MRCA ages, and Brownian empirical moments on phylogenies. The package exposes a small public API with package-local implementations.
 }
 \author{
 \strong{Maintainer}: Gilles Didier \email{gilles.didier@free.fr}

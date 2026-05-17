@@ -11,13 +11,7 @@ Le package n'est pas conçu pour le CRAN. Il sert à reproduire et organiser des
 
 ## Principe de construction
 
-Les scripts initiaux sont conservés dans :
-
-```r
-inst/scripts/original/
-```
-
-Les fonctions publiques sont des wrappers conservateurs. Elles ne modifient pas les formules, les intégrandes ou les boucles internes des scripts source. Les noms publics cherchent seulement à rendre l'API plus cohérente.
+Les fonctions publiques reposent maintenant sur des implémentations internes au package. Les scripts initiaux ne sont plus embarqués dans `inst/scripts/original/`.
 
 ## Installation locale
 

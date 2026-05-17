@@ -4,7 +4,7 @@ Version: 0.1.0
 Authors@R: person(given = "Gilles", family = "Didier", role = c("aut", "cre"), email = "gilles.didier@free.fr")
 Author: Gilles Didier
 Maintainer: Gilles Didier <gilles.didier@free.fr>
-Description: Conservative companion package for reproducing numerical results and figures for an article on birth-death processes, MRCA ages, and Brownian empirical moments on phylogenies. The package exposes a small public API and keeps the original scripts in inst/scripts/original.
+Description: Conservative companion package for reproducing numerical results and figures for an article on birth-death processes, MRCA ages, and Brownian empirical moments on phylogenies. The package exposes a small public API with package-local implementations.
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
