@@ -56,11 +56,10 @@ mrca_age_plot_dynamics()
 ### Espérance de la variance empirique
 
 ```r
-empirical_variance_expectation()
-simulate_empirical_variance()
-summarise_empirical_variance_simulation()
-plot_empirical_variance_expectation()
-run_empirical_variance_experiment()
+empirical_variance_compute_expectation()
+empirical_variance_simulate()
+empirical_variance_summarise_simulation()
+empirical_variance_plot_expectation()
 ```
 
 Convention préservée : la variance empirique vaut 0 quand il y a moins de deux lignées vivantes.
@@ -77,12 +76,11 @@ Il n'y a pas de conditionnement à `N(t) >= 2` ni à la survie à un temps final
 ### Variance de la moyenne empirique
 
 ```r
-empirical_mean_variance()
-simulate_empirical_mean()
-summarise_empirical_mean_simulation()
-plot_empirical_mean_variance()
-plot_empirical_mean_paths()
-run_empirical_mean_variance_experiment()
+empirical_mean_compute_variance()
+empirical_mean_simulate()
+empirical_mean_summarise_simulation()
+empirical_mean_plot_variance()
+empirical_mean_plot_paths()
 ```
 
 La théorie actuellement exposée correspond à :
@@ -126,12 +124,12 @@ Pour les simulations birth-death, le processus reste simulé depuis le temps 0 j
 ```r
 library(PhyloTraitDynamics)
 
-th <- empirical_variance_expectation(
+th <- empirical_variance_compute_expectation(
   birth = 0.8,
   death = 0.2,
   sigma2 = 1,
-  time_end = 3,
   time_step = 0.02,
+  time_end = 3,
   conditioning = "none",
   method = "auto"
 )
@@ -142,7 +140,7 @@ plot(th$time, th$empirical_variance_expectation, type = "l")
 ## Exemple minimal : variance de la moyenne empirique
 
 ```r
-th_mean <- empirical_mean_variance(
+th_mean <- empirical_mean_compute_variance(
   birth = function(t) 0.6 + 0.1 * t,
   death = 0.2,
   sigma2 = 1,
