@@ -1,0 +1,17 @@
+Package: PhyloTraitDynamics
+Title: Companion Code for Phylogenetic Trait Dynamics
+Version: 0.1.0
+Authors@R: person(given = "Gilles", family = "Didier", role = c("aut", "cre"), email = "gilles.didier@free.fr")
+Description: Conservative companion package for reproducing numerical results and figures for an article on birth-death processes, MRCA ages, and Brownian empirical moments on phylogenies. The package exposes a small public API and keeps the original scripts in inst/scripts/original.
+License: MIT + file LICENSE
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.0
+Imports:
+    ape,
+    CompQuadForm,
+    graphics,
+    grDevices,
+    stats
+Suggests:
+    phytools
