@@ -1,6 +1,28 @@
 ## Public API for the expectation of empirical variance under a birth-death
 ## process with Brownian traits.
 
+#' Expected Empirical Variance Under Birth-Death Brownian Dynamics
+#'
+#' Computes the theoretical expectation of the empirical trait variance on a
+#' time grid for a birth-death process with Brownian trait evolution.
+#'
+#' @param birth Non-negative birth rate, either a numeric constant or a function
+#'   of time.
+#' @param death Non-negative death rate, either a numeric constant or a function
+#'   of time.
+#' @param sigma2 Brownian variance parameter.
+#' @param time_start,time_end,time_step Time grid definition.
+#' @param conditioning Conditioning used for the expectation. `"none"` is
+#'   unconditional and `"survival"` conditions on `N(t) > 0`.
+#' @param method Theory evaluation method passed to the original implementation.
+#' @param n_steps Number of integration steps for numerical theory.
+#' @param tol,constant_tol,li2_tol Numerical tolerances passed to the original
+#'   implementation.
+#'
+#' @return A data frame with time, survival probability, expected empirical
+#'   variance, conditioning, and method columns. The original script result is
+#'   attached as attribute `"original_result"`.
+#' @export
 empirical_variance_expectation <- function(birth,
                                            death,
                                            sigma2 = 1,
@@ -51,6 +73,22 @@ empirical_variance_expectation <- function(birth,
   out
 }
 
+#' Simulate Empirical Variance Under Birth-Death Brownian Dynamics
+#'
+#' Simulates birth-death Brownian paths and records the empirical variance of
+#' living lineages on the requested time grid.
+#'
+#' @inheritParams empirical_variance_expectation
+#' @param B Number of simulated paths.
+#' @param seed Optional random seed.
+#' @param n_envelope Number of points used by the thinning envelope in the
+#'   original simulator.
+#' @param safety_factor Multiplicative safety factor for the thinning envelope.
+#'
+#' @return An object of class `"empirical_variance_simulation"` containing the
+#'   time grid, empirical variances, lineage counts, simulation parameters, and
+#'   the original result.
+#' @export
 simulate_empirical_variance <- function(birth,
                                         death,
                                         sigma2 = 1,
@@ -100,6 +138,17 @@ simulate_empirical_variance <- function(birth,
   out
 }
 
+#' Summarise an Empirical Variance Simulation
+#'
+#' Computes Monte Carlo summaries from a simulation returned by
+#' `simulate_empirical_variance()`.
+#'
+#' @param x An `"empirical_variance_simulation"` object.
+#'
+#' @return A data frame with time, empirical survival probability, unconditional
+#'   Monte Carlo mean empirical variance, and survival-conditioned Monte Carlo
+#'   mean empirical variance.
+#' @export
 summarise_empirical_variance_simulation <- function(x) {
   if (!inherits(x, "empirical_variance_simulation")) {
     stop("'x' must be the output of simulate_empirical_variance().", call. = FALSE)
@@ -114,6 +163,26 @@ summarise_empirical_variance_simulation <- function(x) {
   )
 }
 
+#' Plot Empirical Variance Theory and Simulation
+#'
+#' Plots simulated empirical variance paths, Monte Carlo summaries, and/or the
+#' theoretical expectation on a common set of axes.
+#'
+#' @param simulation Optional `"empirical_variance_simulation"` object.
+#' @param theory Optional data frame returned by
+#'   `empirical_variance_expectation()`.
+#' @param summary Optional data frame returned by
+#'   `summarise_empirical_variance_simulation()`. If omitted and `simulation` is
+#'   supplied, it is computed automatically.
+#' @param show_paths Logical; whether to draw individual simulated paths.
+#' @param conditioning Which summary column to plot.
+#' @param max_paths Maximum number of simulated paths to draw.
+#' @param alpha Transparency used for simulated paths.
+#' @param main,xlab,ylab Base graphics labels.
+#'
+#' @return Invisibly returns a list containing `simulation`, `theory`, and
+#'   `summary`.
+#' @export
 plot_empirical_variance_expectation <- function(simulation = NULL,
                                                 theory = NULL,
                                                 summary = NULL,
@@ -207,6 +276,16 @@ plot_empirical_variance_expectation <- function(simulation = NULL,
   invisible(list(simulation = simulation, theory = theory, summary = summary))
 }
 
+#' Run an Empirical Variance Experiment
+#'
+#' Convenience wrapper that simulates paths, computes theory, and builds Monte
+#' Carlo summaries for empirical variance under birth-death Brownian dynamics.
+#'
+#' @inheritParams empirical_variance_expectation
+#' @inheritParams simulate_empirical_variance
+#'
+#' @return A list with components `simulation`, `theory`, and `summary`.
+#' @export
 run_empirical_variance_experiment <- function(birth,
                                               death,
                                               sigma2 = 1,

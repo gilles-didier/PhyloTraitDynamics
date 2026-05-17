@@ -3,6 +3,13 @@
 ## scripts stored in inst/scripts/original/.  The original scientific code is
 ## sourced in isolated environments and is not edited here.
 
+#' @keywords internal
+#' @importFrom CompQuadForm davies
+#' @importFrom graphics axis legend lines matlines mtext par plot polygon
+#' @importFrom grDevices adjustcolor
+#' @importFrom stats var
+"_PACKAGE"
+
 .bd_original_envs <- new.env(parent = emptyenv())
 
 .bd_original_file <- function(file) {

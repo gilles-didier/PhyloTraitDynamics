@@ -1,0 +1,4 @@
+^\.\.Rcheck$
+^\.agents$
+^\.codex$
+^.*\.Rcheck$

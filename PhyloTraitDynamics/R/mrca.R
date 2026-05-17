@@ -1,5 +1,24 @@
 ## Public API for MRCA age distributions.
 
+#' MRCA Age Distribution at One Time
+#'
+#' Computes the distribution and summary statistics of the most recent common
+#' ancestor age at a fixed time under a birth-death process.
+#'
+#' @param birth Non-negative birth rate, either a numeric constant or a function
+#'   of time.
+#' @param death Non-negative death rate, either a numeric constant or a function
+#'   of time.
+#' @param time Observation time.
+#' @param time_step Internal time step. If `NULL`, a default step is derived from
+#'   `time`.
+#' @param probs Quantile probabilities to report.
+#' @param n_internal Optional number of internal subintervals; when supplied it
+#'   overrides `time_step`.
+#'
+#' @return An object of class `"mrca_age_distribution"` with distribution grid,
+#'   summary statistics, requested probabilities, and the original result.
+#' @export
 mrca_age_distribution <- function(birth,
                                   death,
                                   time,
@@ -52,6 +71,21 @@ mrca_age_distribution <- function(birth,
   out
 }
 
+#' MRCA Age Distribution Dynamics
+#'
+#' Computes MRCA age distribution summaries over a time grid under a birth-death
+#' process.
+#'
+#' @inheritParams mrca_age_distribution
+#' @param time_start,time_end,time_step Time grid definition.
+#' @param n_internal_per_step Number of internal integration substeps per output
+#'   time step.
+#' @param include_zero Logical; whether to include time zero in the original
+#'   dynamics computation.
+#'
+#' @return An object of class `"mrca_age_distribution_dynamics"` containing the
+#'   summary data frame, distribution grids, probabilities, and original call.
+#' @export
 mrca_age_distribution_dynamics <- function(birth,
                                            death,
                                            time_start = 0,
@@ -89,6 +123,19 @@ mrca_age_distribution_dynamics <- function(birth,
   raw
 }
 
+#' Plot MRCA Age Distribution Dynamics
+#'
+#' Plots MRCA age summaries over time, including median, optional interquartile
+#' band, and optional expectation.
+#'
+#' @param x An `"mrca_age_distribution_dynamics"` object.
+#' @param show_iqr Logical; whether to draw the interquartile band.
+#' @param show_expectation Logical; whether to draw the expectation curve.
+#' @param main,xlab,ylab Base graphics labels.
+#' @param ... Additional arguments passed to [graphics::plot()].
+#'
+#' @return Invisibly returns `x`.
+#' @export
 plot_mrca_age_distribution_dynamics <- function(x,
                                                 show_iqr = TRUE,
                                                 show_expectation = TRUE,

@@ -1,5 +1,18 @@
 ## Public API for fixed phylogenetic trees.
 
+#' Simulate Brownian Traits on a Fixed Tree
+#'
+#' Simulates one Brownian trait realization on a fixed phylogenetic tree and
+#' records empirical mean and empirical variance through time.
+#'
+#' @param tree A phylogenetic tree of class `"phylo"`.
+#' @param sigma2 Brownian variance parameter.
+#' @param time_step Time step used for the simulation output.
+#' @param seed Optional random seed.
+#'
+#' @return An object of class `"fixed_tree_brownian_realization"` containing the
+#'   input tree, simulation data frame, time series, parameters, and seed.
+#' @export
 simulate_fixed_tree_brownian_realization <- function(tree,
                                                      sigma2 = 1,
                                                      time_step,
@@ -34,6 +47,17 @@ simulate_fixed_tree_brownian_realization <- function(tree,
   out
 }
 
+#' Plot a Fixed-Tree Brownian Realization
+#'
+#' Plots the simulated Brownian realization together with the fixed tree using
+#' the original plotting routine.
+#'
+#' @param x A `"fixed_tree_brownian_realization"` object.
+#' @param n_bands Number of time bands shown by the original plotting routine.
+#' @param time_band_col Color used for time bands.
+#'
+#' @return Invisibly returns `x`.
+#' @export
 plot_fixed_tree_brownian_realization <- function(x,
                                                  n_bands = 10,
                                                  time_band_col = grDevices::adjustcolor("blue", alpha.f = 0.05)) {
@@ -50,6 +74,20 @@ plot_fixed_tree_brownian_realization <- function(x,
   invisible(x)
 }
 
+#' Theoretical Summary on a Fixed Tree
+#'
+#' Computes theoretical summaries of empirical mean variance and empirical
+#' variance for Brownian traits on a fixed phylogenetic tree.
+#'
+#' @inheritParams simulate_fixed_tree_brownian_realization
+#' @param time_start,time_end,time_step Time grid definition. If `time_end` is
+#'   `NULL`, the maximum tree time is used.
+#'
+#' @return A data frame with time, lineage counts, empirical mean variance,
+#'   empirical variance expectation, empirical variance quartiles, and empirical
+#'   variance variance. The tree, `sigma2`, and original result are attached as
+#'   attributes.
+#' @export
 fixed_tree_theoretical_summary <- function(tree,
                                            sigma2 = 1,
                                            time_start = 0,
@@ -90,6 +128,21 @@ fixed_tree_theoretical_summary <- function(tree,
   out
 }
 
+#' Plot a Fixed-Tree Theoretical Summary
+#'
+#' Plots fixed-tree theoretical summaries for empirical mean variance and
+#' empirical variance, optionally with the tree.
+#'
+#' @param x A data frame returned by `fixed_tree_theoretical_summary()`.
+#' @param tree Optional tree of class `"phylo"`. If omitted, the `"tree"`
+#'   attribute of `x` is used.
+#' @param show_tree Logical; whether to include the tree panel.
+#' @param main Base graphics title for the tree panel.
+#' @param time_band_col,band_col,expectation_col,median_col,mean_variance_col
+#'   Plot colors.
+#'
+#' @return Invisibly returns `x`.
+#' @export
 plot_fixed_tree_theoretical_summary <- function(x,
                                                 tree = NULL,
                                                 show_tree = TRUE,

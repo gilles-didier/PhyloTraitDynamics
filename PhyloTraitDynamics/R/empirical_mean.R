@@ -1,6 +1,27 @@
 ## Public API for the variance of the empirical mean under a birth-death
 ## process with Brownian traits.
 
+#' Variance of the Empirical Mean Under Birth-Death Brownian Dynamics
+#'
+#' Computes the theoretical variance of the empirical mean of Brownian traits,
+#' conditional on survival at each time.
+#'
+#' @param birth Non-negative birth rate, either a numeric constant or a function
+#'   of time.
+#' @param death Non-negative death rate, either a numeric constant or a function
+#'   of time.
+#' @param sigma2 Brownian variance parameter.
+#' @param time_start,time_end,time_step Time grid definition.
+#' @param conditioning Conditioning used for the variance. Only `"survival"` is
+#'   implemented by the original script.
+#' @param n_steps Number of integration steps for numerical theory.
+#' @param tol_sing,li2_tol Numerical tolerances passed to the original
+#'   implementation.
+#'
+#' @return A data frame with time, survival probability, empirical mean
+#'   variance, and conditioning columns. The original script result is attached
+#'   as attribute `"original_result"`.
+#' @export
 empirical_mean_variance <- function(birth,
                                     death,
                                     sigma2 = 1,
@@ -41,6 +62,23 @@ empirical_mean_variance <- function(birth,
   out
 }
 
+#' Simulate Empirical Means Under Birth-Death Brownian Dynamics
+#'
+#' Simulates birth-death Brownian paths and records the empirical mean of living
+#' lineages on the requested time grid.
+#'
+#' @inheritParams empirical_mean_variance
+#' @param B Number of simulated paths.
+#' @param x0 Initial trait value.
+#' @param seed Optional random seed.
+#' @param n_envelope Number of points used by the thinning envelope in the
+#'   original simulator.
+#' @param safety_factor Multiplicative safety factor for the thinning envelope.
+#'
+#' @return An object of class `"empirical_mean_simulation"` containing the time
+#'   grid, empirical means, lineage counts, simulation parameters, and the
+#'   original result.
+#' @export
 simulate_empirical_mean <- function(birth,
                                     death,
                                     sigma2 = 1,
@@ -91,6 +129,17 @@ simulate_empirical_mean <- function(birth,
   out
 }
 
+#' Summarise an Empirical Mean Simulation
+#'
+#' Computes Monte Carlo summaries from a simulation returned by
+#' `simulate_empirical_mean()`.
+#'
+#' @param x An `"empirical_mean_simulation"` object.
+#'
+#' @return A data frame with time, empirical survival probability,
+#'   survival-conditioned empirical mean, and survival-conditioned variance of
+#'   the empirical mean.
+#' @export
 summarise_empirical_mean_simulation <- function(x) {
   if (!inherits(x, "empirical_mean_simulation")) {
     stop("'x' must be the output of simulate_empirical_mean().", call. = FALSE)
@@ -105,6 +154,21 @@ summarise_empirical_mean_simulation <- function(x) {
   )
 }
 
+#' Plot Variance of the Empirical Mean
+#'
+#' Plots Monte Carlo summaries and/or theoretical values for the variance of the
+#' empirical mean.
+#'
+#' @param simulation Optional `"empirical_mean_simulation"` object.
+#' @param theory Optional data frame returned by `empirical_mean_variance()`.
+#' @param summary Optional data frame returned by
+#'   `summarise_empirical_mean_simulation()`. If omitted and `simulation` is
+#'   supplied, it is computed automatically.
+#' @param main,xlab,ylab Base graphics labels.
+#'
+#' @return Invisibly returns a list containing `simulation`, `theory`, and
+#'   `summary`.
+#' @export
 plot_empirical_mean_variance <- function(simulation = NULL,
                                          theory = NULL,
                                          summary = NULL,
@@ -165,6 +229,17 @@ plot_empirical_mean_variance <- function(simulation = NULL,
   invisible(list(simulation = simulation, theory = theory, summary = summary))
 }
 
+#' Plot Empirical Mean Paths
+#'
+#' Plots individual simulated empirical mean paths.
+#'
+#' @param simulation An `"empirical_mean_simulation"` object.
+#' @param max_paths Maximum number of simulated paths to draw.
+#' @param alpha Transparency used for simulated paths.
+#' @param main,xlab,ylab Base graphics labels.
+#'
+#' @return Invisibly returns `simulation`.
+#' @export
 plot_empirical_mean_paths <- function(simulation,
                                       max_paths = 100,
                                       alpha = 0.08,
@@ -192,6 +267,16 @@ plot_empirical_mean_paths <- function(simulation,
   invisible(simulation)
 }
 
+#' Run an Empirical Mean Variance Experiment
+#'
+#' Convenience wrapper that simulates paths, computes theory, and builds Monte
+#' Carlo summaries for the empirical mean under birth-death Brownian dynamics.
+#'
+#' @inheritParams empirical_mean_variance
+#' @inheritParams simulate_empirical_mean
+#'
+#' @return A list with components `simulation`, `theory`, and `summary`.
+#' @export
 run_empirical_mean_variance_experiment <- function(birth,
                                                    death,
                                                    sigma2 = 1,
