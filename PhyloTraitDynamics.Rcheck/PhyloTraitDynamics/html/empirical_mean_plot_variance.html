@@ -1,0 +1,75 @@
+<!DOCTYPE html><html><head><title>R: Plot Variance of the Empirical Mean</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.css">
+<script>
+const macros = { "\\R": "\\textsf{R}", "\\mbox": "\\text", "\\code": "\\texttt"};
+function processMathHTML() {
+    var l = document.getElementsByClassName('reqn');
+    for (let e of l) { katex.render(e.textContent, e, { throwOnError: false, macros }); }
+    return;
+}</script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.js"
+    onload="processMathHTML();"></script>
+<link rel="stylesheet" type="text/css" href="R.css">
+</head><body><div class="container"><main>
+
+<table style="width: 100%;"><tr><td>empirical_mean_plot_variance {PhyloTraitDynamics}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Plot Variance of the Empirical Mean</h2>
+
+<h3>Description</h3>
+
+<p>Plots Monte Carlo summaries and/or theoretical values for the variance of the
+empirical mean.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre><code class='language-R'>empirical_mean_plot_variance(
+  simulation = NULL,
+  theory = NULL,
+  summary = NULL,
+  main = NULL,
+  xlab = "time",
+  ylab = "Variance of empirical mean"
+)
+</code></pre>
+
+
+<h3>Arguments</h3>
+
+<table role = "presentation">
+<tr><td><code id="simulation">simulation</code></td>
+<td>
+<p>Optional <code>"empirical_mean_simulation"</code> object.</p>
+</td></tr>
+<tr><td><code id="theory">theory</code></td>
+<td>
+<p>Optional data frame returned by
+<code>empirical_mean_compute_variance()</code>.</p>
+</td></tr>
+<tr><td><code id="summary">summary</code></td>
+<td>
+<p>Optional data frame returned by
+<code>empirical_mean_summarise_simulation()</code>. If omitted and <code>simulation</code> is
+supplied, it is computed automatically.</p>
+</td></tr>
+<tr><td><code id="main">main</code>, <code id="xlab">xlab</code>, <code id="ylab">ylab</code></td>
+<td>
+<p>Base graphics labels.</p>
+</td></tr>
+</table>
+
+
+<h3>Value</h3>
+
+<p>Invisibly returns a list containing <code>simulation</code>, <code>theory</code>, and
+<code>summary</code>.
+</p>
+
+<hr><div style="text-align: center;">[Package <em>PhyloTraitDynamics</em> version 0.1.0 <a href="00Index.html">Index</a>]</div></main>
+
+</div>
+</body></html>

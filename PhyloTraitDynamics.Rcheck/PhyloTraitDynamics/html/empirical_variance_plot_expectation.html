@@ -1,0 +1,95 @@
+<!DOCTYPE html><html><head><title>R: Plot Expected Empirical Variance</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.css">
+<script>
+const macros = { "\\R": "\\textsf{R}", "\\mbox": "\\text", "\\code": "\\texttt"};
+function processMathHTML() {
+    var l = document.getElementsByClassName('reqn');
+    for (let e of l) { katex.render(e.textContent, e, { throwOnError: false, macros }); }
+    return;
+}</script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.js"
+    onload="processMathHTML();"></script>
+<link rel="stylesheet" type="text/css" href="R.css">
+</head><body><div class="container"><main>
+
+<table style="width: 100%;"><tr><td>empirical_variance_plot_expectation {PhyloTraitDynamics}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Plot Expected Empirical Variance</h2>
+
+<h3>Description</h3>
+
+<p>Plots simulated empirical variance paths, Monte Carlo summaries, and/or the
+theoretical expectation on a common set of axes.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre><code class='language-R'>empirical_variance_plot_expectation(
+  simulation = NULL,
+  theory = NULL,
+  summary = NULL,
+  show_paths = TRUE,
+  conditioning = c("none", "survival"),
+  max_paths = Inf,
+  alpha = 0.05,
+  main = NULL,
+  xlab = "time",
+  ylab = "Empirical variance"
+)
+</code></pre>
+
+
+<h3>Arguments</h3>
+
+<table role = "presentation">
+<tr><td><code id="simulation">simulation</code></td>
+<td>
+<p>Optional <code>"empirical_variance_simulation"</code> object.</p>
+</td></tr>
+<tr><td><code id="theory">theory</code></td>
+<td>
+<p>Optional data frame returned by
+<code>empirical_variance_compute_expectation()</code>.</p>
+</td></tr>
+<tr><td><code id="summary">summary</code></td>
+<td>
+<p>Optional data frame returned by
+<code>empirical_variance_summarise_simulation()</code>. If omitted and <code>simulation</code> is
+supplied, it is computed automatically.</p>
+</td></tr>
+<tr><td><code id="show_paths">show_paths</code></td>
+<td>
+<p>Logical; whether to draw individual simulated paths.</p>
+</td></tr>
+<tr><td><code id="conditioning">conditioning</code></td>
+<td>
+<p>Which expectation to plot.</p>
+</td></tr>
+<tr><td><code id="max_paths">max_paths</code></td>
+<td>
+<p>Maximum number of simulated paths to draw.</p>
+</td></tr>
+<tr><td><code id="alpha">alpha</code></td>
+<td>
+<p>Transparency used for simulated paths.</p>
+</td></tr>
+<tr><td><code id="main">main</code>, <code id="xlab">xlab</code>, <code id="ylab">ylab</code></td>
+<td>
+<p>Base graphics labels.</p>
+</td></tr>
+</table>
+
+
+<h3>Value</h3>
+
+<p>Invisibly returns a list containing <code>simulation</code>, <code>theory</code>, and
+<code>summary</code>.
+</p>
+
+<hr><div style="text-align: center;">[Package <em>PhyloTraitDynamics</em> version 0.1.0 <a href="00Index.html">Index</a>]</div></main>
+
+</div>
+</body></html>

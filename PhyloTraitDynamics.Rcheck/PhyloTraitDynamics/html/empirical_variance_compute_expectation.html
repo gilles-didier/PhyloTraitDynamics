@@ -1,0 +1,101 @@
+<!DOCTYPE html><html><head><title>R: Expected Empirical Variance Under Birth-Death Brownian...</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.css">
+<script>
+const macros = { "\\R": "\\textsf{R}", "\\mbox": "\\text", "\\code": "\\texttt"};
+function processMathHTML() {
+    var l = document.getElementsByClassName('reqn');
+    for (let e of l) { katex.render(e.textContent, e, { throwOnError: false, macros }); }
+    return;
+}</script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.js"
+    onload="processMathHTML();"></script>
+<link rel="stylesheet" type="text/css" href="R.css">
+</head><body><div class="container"><main>
+
+<table style="width: 100%;"><tr><td>empirical_variance_compute_expectation {PhyloTraitDynamics}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Expected Empirical Variance Under Birth-Death Brownian Dynamics</h2>
+
+<h3>Description</h3>
+
+<p>Computes the theoretical expectation of the empirical trait variance on a
+time grid for a birth-death process with Brownian trait evolution.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre><code class='language-R'>empirical_variance_compute_expectation(
+  birth,
+  death,
+  sigma2 = 1,
+  time_end,
+  time_step,
+  conditioning = c("none", "survival"),
+  method = c("auto", "numeric", "closed_constant"),
+  n_steps = 2000,
+  tol = 1e-08,
+  constant_tol = 1e-10,
+  li2_tol = 1e-12
+)
+</code></pre>
+
+
+<h3>Arguments</h3>
+
+<table role = "presentation">
+<tr><td><code id="birth">birth</code></td>
+<td>
+<p>Non-negative birth rate, either a numeric constant or a function
+of time.</p>
+</td></tr>
+<tr><td><code id="death">death</code></td>
+<td>
+<p>Non-negative death rate, either a numeric constant or a function
+of time.</p>
+</td></tr>
+<tr><td><code id="sigma2">sigma2</code></td>
+<td>
+<p>Brownian variance parameter.</p>
+</td></tr>
+<tr><td><code id="time_end">time_end</code>, <code id="time_step">time_step</code></td>
+<td>
+<p>Time grid definition.</p>
+</td></tr>
+<tr><td><code id="conditioning">conditioning</code></td>
+<td>
+<p>Conditioning used for the expectation. <code>"none"</code> is
+unconditional and <code>"survival"</code> conditions on <code>N(t) &gt; 0</code>.</p>
+</td></tr>
+<tr><td><code id="method">method</code></td>
+<td>
+<p>Theory evaluation method. <code>"auto"</code> uses the closed constant-rate
+formula when the birth and death rates are constant on the time grid, and
+otherwise uses the numerical method. <code>"closed_constant"</code> requires constant
+birth and death rates.</p>
+</td></tr>
+<tr><td><code id="n_steps">n_steps</code></td>
+<td>
+<p>Number of integration steps for numerical theory.</p>
+</td></tr>
+<tr><td><code id="tol">tol</code>, <code id="constant_tol">constant_tol</code>, <code id="li2_tol">li2_tol</code></td>
+<td>
+<p>Numerical tolerances passed to the original
+implementation.</p>
+</td></tr>
+</table>
+
+
+<h3>Value</h3>
+
+<p>A data frame with time, survival probability, expected empirical
+variance, conditioning, and method columns. The original script result is
+attached as attribute <code>"original_result"</code>.
+</p>
+
+<hr><div style="text-align: center;">[Package <em>PhyloTraitDynamics</em> version 0.1.0 <a href="00Index.html">Index</a>]</div></main>
+
+</div>
+</body></html>

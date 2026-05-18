@@ -1,0 +1,37 @@
+* installing *source* package ‘PhyloTraitDynamics’ ...
+** this is package ‘PhyloTraitDynamics’ version ‘0.1.0’
+** using staged installation
+** R
+** inst
+** byte-compile and prepare package for lazy loading
+** help
+*** installing help indices
+  converting help for package ‘PhyloTraitDynamics’
+    finding HTML links ... done
+    PhyloTraitDynamics-package              html  
+    empirical_mean_compute_variance         html  
+    empirical_mean_plot_paths               html  
+    empirical_mean_plot_variance            html  
+    empirical_mean_simulate                 html  
+    empirical_mean_summarise_simulation     html  
+    empirical_variance_compute_expectation
+                                            html  
+    empirical_variance_plot_expectation     html  
+    empirical_variance_plot_paths           html  
+    empirical_variance_simulate             html  
+    empirical_variance_summarise_simulation
+                                            html  
+    fixed_tree_compute_theoretical_summary
+                                            html  
+    fixed_tree_plot_brownian_realization    html  
+    fixed_tree_plot_theoretical_summary     html  
+    fixed_tree_simulate_brownian_realization
+                                            html  
+    mrca_age_compute_distribution           html  
+    mrca_age_compute_dynamics               html  
+    mrca_age_plot_dynamics                  html  
+** building package indices
+** testing if installed package can be loaded from temporary location
+** testing if installed package can be loaded from final location
+** testing if installed package keeps a record of temporary installation path
+* DONE (PhyloTraitDynamics)
