@@ -292,6 +292,48 @@ empirical_variance_plot_expectation <- function(simulation = NULL,
 }
 
 
+#' Plot Empirical Variance Paths
+#'
+#' Plots individual simulated empirical variance paths.
+#'
+#' @param simulation An `"empirical_variance_simulation"` object.
+#' @param max_paths Maximum number of simulated paths to draw.
+#' @param alpha Transparency used for simulated paths.
+#' @param main,xlab,ylab Base graphics labels.
+#'
+#' @return Invisibly returns `simulation`.
+#'
+#' @export
+empirical_variance_plot_paths <- function(simulation,
+                                          max_paths = 100,
+                                          alpha = 0.08,
+                                          main = NULL,
+                                          xlab = "time",
+                                          ylab = "Empirical variance") {
+  if (!inherits(simulation, "empirical_variance_simulation")) {
+    stop("'simulation' must be the output of empirical_variance_simulate().", call. = FALSE)
+  }
+
+  B <- nrow(simulation$empirical_variance)
+  path_idx <- seq_len(min(as.integer(max_paths), B))
+  yy <- as.numeric(simulation$empirical_variance[path_idx, , drop = FALSE])
+  ymax <- max(yy, na.rm = TRUE)
+  if (!is.finite(ymax) || ymax <= 0) {
+    ymax <- 1
+  }
+
+  graphics::plot(simulation$time, rep(NA_real_, length(simulation$time)),
+                 type = "n", xlab = xlab, ylab = ylab, ylim = c(0, ymax),
+                 main = main)
+  col_path <- grDevices::adjustcolor("black", alpha.f = alpha)
+  for (b in path_idx) {
+    graphics::lines(simulation$time, simulation$empirical_variance[b, ], col = col_path)
+  }
+
+  invisible(simulation)
+}
+
+
 .empirical_variance_make_rate_function <- function(rate, name = "rate") {
   if (is.function(rate)) {
     return(function(t) {
@@ -1354,4 +1396,3 @@ empirical_variance_plot_expectation <- function(simulation = NULL,
 
   invisible(list(sim = sim_res, empirical = empirical_res, theory = theory_res))
 }
-

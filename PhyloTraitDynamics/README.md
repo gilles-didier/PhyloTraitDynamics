@@ -54,6 +54,7 @@ empirical_variance_compute_expectation()
 empirical_variance_simulate()
 empirical_variance_summarise_simulation()
 empirical_variance_plot_expectation()
+empirical_variance_plot_paths()
 ```
 
 Convention préservée : la variance empirique vaut 0 quand il y a moins de deux lignées vivantes.
