@@ -1,3 +1,5 @@
+birth_death_brownian_simulate
+                        Simulate Birth-Death Brownian Empirical Moments
 empirical_mean_compute_variance
                         Variance of the Empirical Mean Under
                         Birth-Death Brownian Dynamics
@@ -5,11 +7,6 @@ empirical_mean_plot_paths
                         Plot Empirical Mean Paths
 empirical_mean_plot_variance
                         Plot Variance of the Empirical Mean
-empirical_mean_simulate
-                        Simulate Empirical Means Under Birth-Death
-                        Brownian Dynamics
-empirical_mean_summarise_simulation
-                        Summarise an Empirical Mean Simulation
 empirical_variance_compute_expectation
                         Expected Empirical Variance Under Birth-Death
                         Brownian Dynamics
@@ -17,11 +14,6 @@ empirical_variance_plot_expectation
                         Plot Expected Empirical Variance
 empirical_variance_plot_paths
                         Plot Empirical Variance Paths
-empirical_variance_simulate
-                        Simulate Empirical Variance Under Birth-Death
-                        Brownian Dynamics
-empirical_variance_summarise_simulation
-                        Summarise an Empirical Variance Simulation
 fixed_tree_compute_theoretical_summary
                         Theoretical Summary on a Fixed Tree
 fixed_tree_plot_brownian_realization

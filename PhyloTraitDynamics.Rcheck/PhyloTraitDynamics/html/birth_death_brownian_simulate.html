@@ -1,4 +1,4 @@
-<!DOCTYPE html><html><head><title>R: Simulate Empirical Variance Under Birth-Death Brownian...</title>
+<!DOCTYPE html><html><head><title>R: Simulate Birth-Death Brownian Empirical Moments</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.css">
@@ -14,26 +14,28 @@ function processMathHTML() {
 <link rel="stylesheet" type="text/css" href="R.css">
 </head><body><div class="container"><main>
 
-<table style="width: 100%;"><tr><td>empirical_variance_simulate {PhyloTraitDynamics}</td><td style="text-align: right;">R Documentation</td></tr></table>
+<table style="width: 100%;"><tr><td>birth_death_brownian_simulate {PhyloTraitDynamics}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
-<h2>Simulate Empirical Variance Under Birth-Death Brownian Dynamics</h2>
+<h2>Simulate Birth-Death Brownian Empirical Moments</h2>
 
 <h3>Description</h3>
 
-<p>Simulates birth-death Brownian paths and records the empirical variance of
-living lineages on the requested time grid.
+<p>Simulates birth-death Brownian paths and records, on the requested time grid,
+the number of living lineages, the empirical mean of their traits, and their
+empirical variance.
 </p>
 
 
 <h3>Usage</h3>
 
-<pre><code class='language-R'>empirical_variance_simulate(
+<pre><code class='language-R'>birth_death_brownian_simulate(
   birth,
   death,
   sigma2 = 1,
   time_end,
   time_step,
   B,
+  x0 = 0,
   seed = NULL,
   n_envelope = 4000,
   safety_factor = 1.05
@@ -66,14 +68,17 @@ of time.</p>
 <td>
 <p>Number of simulated paths.</p>
 </td></tr>
+<tr><td><code id="x0">x0</code></td>
+<td>
+<p>Initial trait value.</p>
+</td></tr>
 <tr><td><code id="seed">seed</code></td>
 <td>
 <p>Optional random seed.</p>
 </td></tr>
 <tr><td><code id="n_envelope">n_envelope</code></td>
 <td>
-<p>Number of points used by the thinning envelope in the
-original simulator.</p>
+<p>Number of points used by the thinning envelope.</p>
 </td></tr>
 <tr><td><code id="safety_factor">safety_factor</code></td>
 <td>
@@ -84,9 +89,9 @@ original simulator.</p>
 
 <h3>Value</h3>
 
-<p>An object of class <code>"empirical_variance_simulation"</code> containing the
-time grid, empirical variances, lineage counts, simulation parameters, and
-the original result.
+<p>An object of class <code>"birth_death_brownian_simulation"</code> containing the
+time grid, matrices of empirical means, empirical variances and lineage
+counts, and a simulation summary.
 </p>
 
 <hr><div style="text-align: center;">[Package <em>PhyloTraitDynamics</em> version 0.1.0 <a href="00Index.html">Index</a>]</div></main>

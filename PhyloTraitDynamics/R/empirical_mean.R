@@ -71,78 +71,10 @@ empirical_mean_compute_variance <- function(birth,
 }
 
 
-#' Simulate Empirical Means Under Birth-Death Brownian Dynamics
-#'
-#' Simulates birth-death Brownian paths and records the empirical mean of living
-#' lineages on the requested time grid.
-#'
-#' @inheritParams empirical_mean_compute_variance
-#' @param B Number of simulated paths.
-#' @param x0 Initial trait value.
-#' @param seed Optional random seed.
-#' @param n_envelope Number of points used by the thinning envelope in the
-#'   original simulator.
-#' @param safety_factor Multiplicative safety factor for the thinning envelope.
-#'
-#' @return An object of class `"empirical_mean_simulation"` containing the time
-#'   grid, empirical means, lineage counts, simulation parameters, and the
-#'   original result.
-#'
-#' @export
-empirical_mean_simulate <- function(birth,
-                                    death,
-                                    sigma2 = 1,
-                                    time_end,
-                                    time_step,
-                                    B,
-                                    x0 = 0,
-                                    seed = NULL,
-                                    n_envelope = 4000,
-                                    safety_factor = 1.05) {
-   time_start = 0
-  requested_grid <- .empirical_mean_make_public_grid(time_start, time_end, time_step)
-  birth_fun <- .birth_death_make_rate_function(birth, "birth")
-  death_fun <- .birth_death_make_rate_function(death, "death")
-
-  raw <- .empirical_mean_simulate_BD_BM_mean_paths(
-    lambda_fun = birth_fun,
-    mu_fun = death_fun,
-    sigma2 = sigma2,
-    tmax = time_end,
-    dt = time_step,
-    B = B,
-    x0 = x0,
-    seed = seed,
-    n_envelope = n_envelope,
-    safety_factor = safety_factor
-  )
-
-  idx <- .empirical_mean_match_grid_indices(raw$grid, requested_grid)
-
-  out <- list(
-    time = raw$grid[idx],
-    empirical_mean = raw$M[, idx, drop = FALSE],
-    n_lineages = raw$N[, idx, drop = FALSE],
-    sigma2 = sigma2,
-    x0 = x0,
-    B = as.integer(B),
-    time_start = time_start,
-    time_end = time_end,
-    time_step = time_step,
-    original_result = raw
-  )
-  out$grid <- out$time
-  out$M <- out$empirical_mean
-  out$N <- out$n_lineages
-  class(out) <- c("empirical_mean_simulation", "list")
-  out
-}
-
-
 #' Summarise an Empirical Mean Simulation
 #'
 #' Computes Monte Carlo summaries from a simulation returned by
-#' `empirical_mean_simulate()`.
+#' `birth_death_brownian_simulate()`.
 #'
 #' @param x An `"empirical_mean_simulation"` object.
 #'
@@ -150,20 +82,17 @@ empirical_mean_simulate <- function(birth,
 #'   survival-conditioned empirical mean, and survival-conditioned variance of
 #'   the empirical mean.
 #'
-#' @export
+#' @keywords internal
 empirical_mean_summarise_simulation <- function(x) {
   if (!inherits(x, "empirical_mean_simulation")) {
-    stop("'x' must be the output of empirical_mean_simulate().", call. = FALSE)
+    stop("'x' must be the output of birth_death_brownian_simulate().", call. = FALSE)
   }
 
-  raw <- .empirical_mean_compute_empirical_BD_BM_meanvar(sim_res = x)
+  if (!is.null(x$summary)) {
+    return(x$summary)
+  }
 
-  data.frame(
-    time = raw$grid,
-    p_survival_empirical = raw$p_surv_emp,
-    empirical_mean_empirical_cond_survival = raw$Mean_emp_cond_surv,
-    empirical_mean_variance_empirical_cond_survival = raw$Var_mean_emp_cond_surv
-  )
+  .birth_death_brownian_summarise_replicates(x)
 }
 
 
@@ -191,7 +120,7 @@ empirical_mean_plot_variance <- function(simulation = NULL,
                                          xlab = "time",
                                          ylab = "Variance of empirical mean") {
   if (!is.null(simulation) && !inherits(simulation, "empirical_mean_simulation")) {
-    stop("'simulation' must be NULL or the output of empirical_mean_simulate().", call. = FALSE)
+    stop("'simulation' must be NULL or the output of birth_death_brownian_simulate().", call. = FALSE)
   }
 
   if (is.null(summary) && !is.null(simulation)) {
@@ -264,7 +193,7 @@ empirical_mean_plot_paths <- function(simulation,
                                       xlab = "time",
                                       ylab = "Empirical mean") {
   if (!inherits(simulation, "empirical_mean_simulation")) {
-    stop("'simulation' must be the output of empirical_mean_simulate().", call. = FALSE)
+    stop("'simulation' must be the output of birth_death_brownian_simulate().", call. = FALSE)
   }
 
   B <- nrow(simulation$empirical_mean)
@@ -544,210 +473,24 @@ empirical_mean_plot_paths <- function(simulation,
 
 
 ## ================================================================
-## 4) Inhomogeneous birth-death simulation by thinning
-## ================================================================
+## 4) Inhomogeneous birth-death Brownian simulation
+##
+## Simulation is now handled by birth_death_brownian_simulate() and
+## its internal helpers in birth_death.R.
 
-.empirical_mean_sim_BD_BM_mean_path_inhom <- function(lambda_fun, mu_fun, sigma2,
-                                      tmax, dt,
-                                      x0 = 0,
-                                      envelope = NULL,
-                                      n_envelope = 4000,
-                                      safety_factor = 1.05){
-  if (!is.finite(sigma2) || sigma2 < 0){
-    stop("'sigma2' must be a finite nonnegative number.")
-  }
-  if (!is.finite(x0)){
-    stop("'x0' must be finite.")
-  }
-
-  grid <- .birth_death_make_time_grid(tmax, dt)
-  n_grid <- length(grid)
-
-  if (is.null(envelope)){
-    envelope <- .birth_death_make_rate_envelope(
-      lambda_fun = lambda_fun,
-      mu_fun = mu_fun,
-      tmax = tmax,
-      n_envelope = n_envelope,
-      safety_factor = safety_factor
-    )
-  }
-
-  time <- 0
-  traits <- x0
-  k <- 1L
-  idx <- 1L
-
-  mean_path <- rep(NA_real_, n_grid)
-  n_path <- integer(n_grid)
-  mean_path[1L] <- x0
-  n_path[1L] <- 1L
-
-  next_event <- .birth_death_sample_next_event_thinning(
-    time = time,
-    k = k,
-    tmax = tmax,
-    lambda_fun = lambda_fun,
-    mu_fun = mu_fun,
-    envelope = envelope
-  )
-
-  while (idx < n_grid){
-    next_grid_time <- grid[idx + 1L]
-    t_next <- min(next_event, next_grid_time, tmax)
-
-    dt_seg <- t_next - time
-    if (dt_seg > 0 && k > 0){
-      traits <- traits + rnorm(k, mean = 0, sd = sqrt(sigma2 * dt_seg))
-    }
-    time <- t_next
-
-    if (abs(time - next_grid_time) < 1e-12){
-      idx <- idx + 1L
-      n_path[idx] <- k
-      mean_path[idx] <- if (k >= 1L) mean(traits) else NA_real_
-      next
-    }
-
-    if (abs(time - next_event) < 1e-12){
-      lambda_now <- .birth_death_eval_rate_fun(lambda_fun, time)
-      mu_now <- .birth_death_eval_rate_fun(mu_fun, time)
-      total_now <- lambda_now + mu_now
-
-      if (total_now <= 0){
-        next_event <- Inf
-        next
-      }
-
-      if (runif(1) < lambda_now / total_now){
-        parent <- sample.int(k, 1L)
-        traits <- c(traits, traits[parent])
-        k <- k + 1L
-      } else {
-        victim <- sample.int(k, 1L)
-        if (k == 1L){
-          traits <- numeric(0)
-          k <- 0L
-        } else {
-          traits <- traits[-victim]
-          k <- k - 1L
-        }
-      }
-
-      next_event <- .birth_death_sample_next_event_thinning(
-        time = time,
-        k = k,
-        tmax = tmax,
-        lambda_fun = lambda_fun,
-        mu_fun = mu_fun,
-        envelope = envelope
-      )
-
-      next
-    }
-
-    break
-  }
-
-  list(
-    grid = grid,
-    mean = mean_path,
-    n = n_path
-  )
-}
-
-.empirical_mean_simulate_BD_BM_mean_paths <- function(lambda_fun, mu_fun, sigma2,
-                                      tmax, dt, B,
-                                      x0 = 0,
-                                      seed = NULL,
-                                      n_envelope = 4000,
-                                      safety_factor = 1.05){
-  if (!is.null(seed)){
-    set.seed(seed)
-  }
-  if (!is.numeric(B) || length(B) != 1L || B < 1){
-    stop("'B' must be a positive integer.")
-  }
-  B <- as.integer(B)
-
-  grid <- .birth_death_make_time_grid(tmax, dt)
-  n_grid <- length(grid)
-
-  envelope <- .birth_death_make_rate_envelope(
-    lambda_fun = lambda_fun,
-    mu_fun = mu_fun,
-    tmax = tmax,
-    n_envelope = n_envelope,
-    safety_factor = safety_factor
-  )
-
-  M <- matrix(NA_real_, nrow = B, ncol = n_grid)
-  N <- matrix(0L, nrow = B, ncol = n_grid)
-
-  for (b in seq_len(B)){
-    out <- .empirical_mean_sim_BD_BM_mean_path_inhom(
-      lambda_fun = lambda_fun,
-      mu_fun = mu_fun,
-      sigma2 = sigma2,
-      tmax = tmax,
-      dt = dt,
-      x0 = x0,
-      envelope = envelope,
-      safety_factor = safety_factor
-    )
-    M[b, ] <- out$mean
-    N[b, ] <- out$n
-  }
-
-  list(
-    grid = grid,
-    sigma2 = sigma2,
-    x0 = x0,
-    M = M,
-    N = N,
-    B = B,
-    tmax = tmax,
-    dt = dt
-  )
-}
-
-
-## ================================================================
 ## 5) Empirical summaries extracted from simulations
 ## ================================================================
 
 .empirical_mean_compute_empirical_BD_BM_meanvar <- function(sim_res){
-  grid <- sim_res$grid
-  M <- sim_res$M
-  N <- sim_res$N
-  x0 <- if (!is.null(sim_res$x0)) sim_res$x0 else 0
-
-  alive <- N > 0
-  p_surv_emp <- colMeans(alive)
-
-  ## Since E[bar X(t) | N(t)>0] = x0, the Monte Carlo estimator below uses
-  ## the known centering x0 rather than the sample mean. This estimates
-  ## E[(bar X(t)-x0)^2 | N(t)>0].
-  Var_mean_emp_cond_surv <- rep(NA_real_, length(grid))
-  Mean_emp_cond_surv <- rep(NA_real_, length(grid))
-
-  for (j in seq_along(grid)){
-    keep <- alive[, j]
-    if (any(keep)){
-      x <- M[keep, j]
-      Var_mean_emp_cond_surv[j] <- mean((x - x0)^2)
-      Mean_emp_cond_surv[j] <- mean(x)
-    }
-  }
+  summary <- .birth_death_brownian_summarise_replicates(sim_res)
 
   list(
-    grid = grid,
-    p_surv_emp = p_surv_emp,
-    Mean_emp_cond_surv = Mean_emp_cond_surv,
-    Var_mean_emp_cond_surv = Var_mean_emp_cond_surv
+    grid = summary$time,
+    p_surv_emp = summary$p_survival_empirical,
+    Mean_emp_cond_surv = summary$empirical_mean_empirical_cond_survival,
+    Var_mean_emp_cond_surv = summary$empirical_mean_variance_empirical_cond_survival
   )
 }
-
 
 ## ================================================================
 ## 6) Comparison helpers

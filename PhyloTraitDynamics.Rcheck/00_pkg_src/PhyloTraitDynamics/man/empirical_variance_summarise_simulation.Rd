@@ -16,5 +16,6 @@ Monte Carlo mean empirical variance.
 }
 \description{
 Computes Monte Carlo summaries from a simulation returned by
-\code{empirical_variance_simulate()}.
+\code{birth_death_brownian_simulate()}.
 }
+\keyword{internal}

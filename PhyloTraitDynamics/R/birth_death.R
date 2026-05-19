@@ -5,6 +5,84 @@
 ## low-level utilities shared by the MRCA-age, empirical-mean, and
 ## empirical-variance modules.
 ## ================================================================
+
+#' Simulate Birth-Death Brownian Empirical Moments
+#'
+#' Simulates birth-death Brownian paths and records, on the requested time grid,
+#' the number of living lineages, the empirical mean of their traits, and their
+#' empirical variance.
+#'
+#' @param birth Non-negative birth rate, either a numeric constant or a function
+#'   of time.
+#' @param death Non-negative death rate, either a numeric constant or a function
+#'   of time.
+#' @param sigma2 Brownian variance parameter.
+#' @param time_end,time_step Time grid definition.
+#' @param B Number of simulated paths.
+#' @param x0 Initial trait value.
+#' @param seed Optional random seed.
+#' @param n_envelope Number of points used by the thinning envelope.
+#' @param safety_factor Multiplicative safety factor for the thinning envelope.
+#'
+#' @return An object of class `"birth_death_brownian_simulation"` containing the
+#'   time grid, matrices of empirical means, empirical variances and lineage
+#'   counts, and a simulation summary.
+#'
+#' @export
+birth_death_brownian_simulate <- function(birth,
+                                          death,
+                                          sigma2 = 1,
+                                          time_end,
+                                          time_step,
+                                          B,
+                                          x0 = 0,
+                                          seed = NULL,
+                                          n_envelope = 4000,
+                                          safety_factor = 1.05) {
+  birth_fun <- .birth_death_make_rate_function(birth, "birth")
+  death_fun <- .birth_death_make_rate_function(death, "death")
+
+  raw <- .birth_death_brownian_simulate_paths(
+    lambda_fun = birth_fun,
+    mu_fun = death_fun,
+    sigma2 = sigma2,
+    tmax = time_end,
+    dt = time_step,
+    B = B,
+    x0 = x0,
+    seed = seed,
+    n_envelope = n_envelope,
+    safety_factor = safety_factor
+  )
+
+  out <- list(
+    time = raw$grid,
+    empirical_mean = raw$M,
+    empirical_variance = raw$V,
+    n_lineages = raw$N,
+    sigma2 = sigma2,
+    x0 = x0,
+    B = as.integer(B),
+    time_end = time_end,
+    time_step = time_step,
+    original_result = raw,
+    summary = raw$summary
+  )
+
+  out$grid <- out$time
+  out$M <- out$empirical_mean
+  out$V <- out$empirical_variance
+  out$N <- out$n_lineages
+
+  class(out) <- c(
+    "birth_death_brownian_simulation",
+    "empirical_mean_simulation",
+    "empirical_variance_simulation",
+    "list"
+  )
+  out
+}
+
 .birth_death_make_rate_function <- function(rate, name = "rate") {
   if (is.function(rate)) {
     return(function(t) {
@@ -331,3 +409,236 @@
     )
   )
 }
+
+## ================================================================
+## Shared birth-death Brownian simulation utilities.
+##
+## These functions simulate the birth-death tree and Brownian traits
+## once, and record all empirical quantities needed by the empirical-
+## mean and empirical-variance modules.
+## ================================================================
+.birth_death_brownian_sim_path_inhom <- function(lambda_fun, mu_fun, sigma2,
+                                                tmax, dt,
+                                                x0 = 0,
+                                                envelope = NULL,
+                                                n_envelope = 4000,
+                                                safety_factor = 1.05){
+  if (!is.finite(sigma2) || sigma2 < 0){
+    stop("'sigma2' must be a finite nonnegative number.")
+  }
+  if (!is.finite(x0)){
+    stop("'x0' must be finite.")
+  }
+
+  grid <- .birth_death_make_time_grid(tmax, dt)
+  n_grid <- length(grid)
+
+  if (is.null(envelope)){
+    envelope <- .birth_death_make_rate_envelope(
+      lambda_fun = lambda_fun,
+      mu_fun = mu_fun,
+      tmax = tmax,
+      n_envelope = n_envelope,
+      safety_factor = safety_factor
+    )
+  }
+
+  time <- 0
+  traits <- x0
+  k <- 1L
+  idx <- 1L
+
+  mean_path <- rep(NA_real_, n_grid)
+  var_path <- numeric(n_grid)
+  n_path <- integer(n_grid)
+
+  mean_path[1L] <- x0
+  var_path[1L] <- 0
+  n_path[1L] <- 1L
+
+  next_event <- .birth_death_sample_next_event_thinning(
+    time = time,
+    k = k,
+    tmax = tmax,
+    lambda_fun = lambda_fun,
+    mu_fun = mu_fun,
+    envelope = envelope
+  )
+
+  while (idx < n_grid){
+    next_grid_time <- grid[idx + 1L]
+    t_next <- min(next_event, next_grid_time, tmax)
+
+    dt_seg <- t_next - time
+    if (dt_seg > 0 && k > 0){
+      traits <- traits + rnorm(k, mean = 0, sd = sqrt(sigma2 * dt_seg))
+    }
+    time <- t_next
+
+    if (abs(time - next_grid_time) < 1e-12){
+      idx <- idx + 1L
+      n_path[idx] <- k
+      mean_path[idx] <- if (k >= 1L) mean(traits) else NA_real_
+      var_path[idx] <- if (k >= 2L) stats::var(traits) else 0
+      next
+    }
+
+    if (abs(time - next_event) < 1e-12){
+      lambda_now <- .birth_death_eval_rate_fun(lambda_fun, time)
+      mu_now <- .birth_death_eval_rate_fun(mu_fun, time)
+      total_now <- lambda_now + mu_now
+
+      if (total_now <= 0){
+        next_event <- Inf
+        next
+      }
+
+      if (runif(1) < lambda_now / total_now){
+        parent <- sample.int(k, 1L)
+        traits <- c(traits, traits[parent])
+        k <- k + 1L
+      } else {
+        victim <- sample.int(k, 1L)
+        if (k == 1L){
+          traits <- numeric(0)
+          k <- 0L
+        } else {
+          traits <- traits[-victim]
+          k <- k - 1L
+        }
+      }
+
+      next_event <- .birth_death_sample_next_event_thinning(
+        time = time,
+        k = k,
+        tmax = tmax,
+        lambda_fun = lambda_fun,
+        mu_fun = mu_fun,
+        envelope = envelope
+      )
+
+      next
+    }
+
+    break
+  }
+
+  list(
+    grid = grid,
+    mean = mean_path,
+    var = var_path,
+    n = n_path
+  )
+}
+
+.birth_death_brownian_simulate_paths <- function(lambda_fun, mu_fun, sigma2,
+                                                tmax, dt, B,
+                                                x0 = 0,
+                                                seed = NULL,
+                                                n_envelope = 4000,
+                                                safety_factor = 1.05){
+  if (!is.null(seed)){
+    set.seed(seed)
+  }
+  if (!is.numeric(B) || length(B) != 1L || B < 1){
+    stop("'B' must be a positive integer.")
+  }
+  B <- as.integer(B)
+
+  grid <- .birth_death_make_time_grid(tmax, dt)
+  n_grid <- length(grid)
+
+  envelope <- .birth_death_make_rate_envelope(
+    lambda_fun = lambda_fun,
+    mu_fun = mu_fun,
+    tmax = tmax,
+    n_envelope = n_envelope,
+    safety_factor = safety_factor
+  )
+
+  M <- matrix(NA_real_, nrow = B, ncol = n_grid)
+  V <- matrix(0, nrow = B, ncol = n_grid)
+  N <- matrix(0L, nrow = B, ncol = n_grid)
+
+  for (b in seq_len(B)){
+    out <- .birth_death_brownian_sim_path_inhom(
+      lambda_fun = lambda_fun,
+      mu_fun = mu_fun,
+      sigma2 = sigma2,
+      tmax = tmax,
+      dt = dt,
+      x0 = x0,
+      envelope = envelope,
+      safety_factor = safety_factor
+    )
+    M[b, ] <- out$mean
+    V[b, ] <- out$var
+    N[b, ] <- out$n
+  }
+
+  out <- list(
+    grid = grid,
+    sigma2 = sigma2,
+    x0 = x0,
+    M = M,
+    V = V,
+    N = N,
+    B = B,
+    tmax = tmax,
+    dt = dt
+  )
+  out$summary <- .birth_death_brownian_summarise_replicates(out)
+  out
+}
+
+.birth_death_brownian_summarise_replicates <- function(sim_res){
+  grid <- sim_res$grid
+  N <- sim_res$N
+
+  if (is.null(grid) || is.null(N)){
+    stop("'sim_res' must contain at least 'grid' and 'N'.")
+  }
+
+  has_M <- !is.null(sim_res$M)
+  has_V <- !is.null(sim_res$V)
+
+  M <- if (has_M) sim_res$M else matrix(NA_real_, nrow = nrow(N), ncol = ncol(N))
+  V <- if (has_V) sim_res$V else matrix(NA_real_, nrow = nrow(N), ncol = ncol(N))
+
+  alive_same_time <- N > 0
+  p_surv_emp <- colMeans(alive_same_time)
+
+  Mean_emp_cond_surv <- rep(NA_real_, length(grid))
+  Var_mean_emp_cond_surv <- rep(NA_real_, length(grid))
+  V_emp_cond_same_time <- rep(NA_real_, length(grid))
+
+  V_emp_uncond <- if (has_V) colMeans(V) else rep(NA_real_, length(grid))
+
+  for (j in seq_along(grid)){
+    keep <- alive_same_time[, j]
+    n_keep <- sum(keep)
+
+    if (has_M && n_keep > 0L){
+      m <- M[keep, j]
+      Mean_emp_cond_surv[j] <- mean(m)
+    }
+
+    if (has_M && n_keep >= 2L){
+      Var_mean_emp_cond_surv[j] <- stats::var(M[keep, j])
+    }
+
+    if (has_V && n_keep > 0L){
+      V_emp_cond_same_time[j] <- mean(V[keep, j])
+    }
+  }
+
+  data.frame(
+    time = grid,
+    p_survival_empirical = p_surv_emp,
+    empirical_mean_empirical_cond_survival = Mean_emp_cond_surv,
+    empirical_mean_variance_empirical_cond_survival = Var_mean_emp_cond_surv,
+    empirical_variance_expectation_empirical = V_emp_uncond,
+    empirical_variance_expectation_empirical_cond_survival = V_emp_cond_same_time
+  )
+}
+
