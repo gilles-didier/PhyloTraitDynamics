@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.5.16)  18 MAY 2026 19:35
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.5.19)  19 MAY 2026 12:15
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -356,7 +356,7 @@ File: t1ptm.fd 2001/06/04 font definitions for T1/ptm.
 File: l3backend-pdftex.def 2026-02-18 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count315
 )
-(/tmp/RtmpUCthlY/Rd2pdf63eacad0d/Rd2.aux)
+(/tmp/RtmpRha4nD/Rd2pdf62e67fd28/Rd2.aux)
 \openout1 = `Rd2.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 8.
@@ -393,8 +393,8 @@ LaTeX Font Info:    ... okay on input line 8.
 \everyMPtoPDFconversion=\toks29
 )
 Package hyperref Info: Link coloring ON on input line 8.
- (/tmp/RtmpUCthlY/Rd2pdf63eacad0d/Rd2.out)
-(/tmp/RtmpUCthlY/Rd2pdf63eacad0d/Rd2.out)
+ (/tmp/RtmpRha4nD/Rd2pdf62e67fd28/Rd2.out)
+(/tmp/RtmpRha4nD/Rd2pdf62e67fd28/Rd2.out)
 \@outlinefile=\write4
 \openout4 = `Rd2.out'.
 
@@ -407,7 +407,7 @@ File: t1zi4.fd 2018/01/14 T1/zi4 (Inconsolata)
 LaTeX Font Info:    Font shape `T1/zi4/m/n' will be
 (Font)              scaled to size 10.0pt on input line 21.
 
-(/tmp/RtmpUCthlY/Rd2pdf63eacad0d/Rd2.toc
+(/tmp/RtmpRha4nD/Rd2pdf62e67fd28/Rd2.toc
 LaTeX Font Info:    Trying to load font information for U+msa on input line 1.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
@@ -438,44 +438,44 @@ LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 4
  (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1ptm.fd
 File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
 ) [2]
-[3] [4]
-Overfull \hbox (21.0281pt too wide) in paragraph at lines 229--231
+[3]
+Overfull \hbox (21.0281pt too wide) in paragraph at lines 195--197
 []\T1/ptm/m/n/10 Computes Monte Carlo sum-maries from a sim-u-la-tion re-turned
  by []\T1/zi4/m/n/10 birth_death_brownian_simulate()[]\T1/ptm/m/n/10 . 
  []
 
-[5] [6]
-Overfull \hbox (12.34973pt too wide) in paragraph at lines 335--337
+[4] [5]
+Overfull \hbox (12.34973pt too wide) in paragraph at lines 301--303
 []\T1/ptm/m/n/10 Optional data frame re-turned by []\T1/zi4/m/n/10 empirical_va
 riance_compute_expectation()[]\T1/ptm/m/n/10 . 
  []
 
 
-Overfull \hbox (17.34973pt too wide) in paragraph at lines 338--341
+Overfull \hbox (17.34973pt too wide) in paragraph at lines 304--307
 []\T1/ptm/m/n/10 Optional data frame re-turned by []\T1/zi4/m/n/10 empirical_va
 riance_summarise_simulation()[]\T1/ptm/m/n/10 .
  []
 
-[7]
-Overfull \hbox (21.0281pt too wide) in paragraph at lines 396--398
+
+Overfull \hbox (21.0281pt too wide) in paragraph at lines 328--330
 []\T1/ptm/m/n/10 Computes Monte Carlo sum-maries from a sim-u-la-tion re-turned
  by []\T1/zi4/m/n/10 birth_death_brownian_simulate()[]\T1/ptm/m/n/10 . 
  []
 
-[8] [9]
-Overfull \hbox (131.87958pt too wide) in paragraph at lines 512--514
+[6] [7] [8]
+Overfull \hbox (131.87958pt too wide) in paragraph at lines 444--446
 []\T1/ptm/m/n/10 A []\T1/zi4/m/n/10 fixed_tree_theoretical_summary []\T1/ptm/m/
 n/10 ob-ject, as re-turned by []\T1/zi4/m/n/10 fixed_tree_compute_theoretical_s
 ummary()[]\T1/ptm/m/n/10 . 
  []
 
-[10] [11]
-Overfull \hbox (0.15822pt too wide) in paragraph at lines 606--608
+[9]
+Overfull \hbox (0.15822pt too wide) in paragraph at lines 538--540
 []\T1/ptm/m/n/10 Optional num-ber of in-ter-nal subin-ter-vals; when sup-plied 
 it over-rides []\T1/zi4/m/n/10 time_step[]\T1/ptm/m/n/10 . 
  []
 
-[12] (/tmp/RtmpUCthlY/Rd2pdf63eacad0d/Rd2.ind [13]
+[10] [11] (/tmp/RtmpRha4nD/Rd2pdf62e67fd28/Rd2.ind [12]
 Overfull \hbox (8.3567pt too wide) in paragraph at lines 4--6
 []| \T1/zi4/m/n/10 empirical_mean_summarise_simulation\T1/ptm/m/n/10 , 
  []
@@ -486,33 +486,33 @@ Overfull \hbox (28.3567pt too wide) in paragraph at lines 6--8
  []
 
 
-Overfull \hbox (3.3567pt too wide) in paragraph at lines 21--23
+Overfull \hbox (3.3567pt too wide) in paragraph at lines 20--22
 []\T1/zi4/m/n/10 empirical_variance_compute_expectation\T1/ptm/m/n/10 , 
  []
 
 
-Overfull \hbox (8.3567pt too wide) in paragraph at lines 26--28
+Overfull \hbox (8.3567pt too wide) in paragraph at lines 24--26
 []\T1/zi4/m/n/10 empirical_variance_summarise_simulation\T1/ptm/m/n/10 , 
  []
 
 
-Overfull \hbox (3.3567pt too wide) in paragraph at lines 31--33
+Overfull \hbox (3.3567pt too wide) in paragraph at lines 29--31
 []\T1/zi4/m/n/10 fixed_tree_compute_theoretical_summary\T1/ptm/m/n/10 , 
  []
 
 
-Overfull \hbox (13.3567pt too wide) in paragraph at lines 37--39
+Overfull \hbox (13.3567pt too wide) in paragraph at lines 35--37
 []\T1/zi4/m/n/10 fixed_tree_simulate_brownian_realization\T1/ptm/m/n/10 , 
  []
 
 
 LaTeX Font Warning: Font shape `T1/zi4/m/it' undefined
-(Font)              using `T1/zi4/m/n' instead on input line 52.
+(Font)              using `T1/zi4/m/n' instead on input line 50.
 
-[14
+[13
 
 
-]) (/tmp/RtmpUCthlY/Rd2pdf63eacad0d/Rd2.aux)
+]) (/tmp/RtmpRha4nD/Rd2pdf62e67fd28/Rd2.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2026-03-20>
@@ -522,16 +522,16 @@ L3 programming layer <2026-03-20>
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
 Package rerunfilecheck Info: File `Rd2.out' has not changed.
-(rerunfilecheck)             Checksum: 655D6DED1E97CC8837E16F42C83D31EA;4365.
+(rerunfilecheck)             Checksum: 6E7C767AA664F4DEC8078FF14190BF34;3917.
  ) 
 Here is how much of TeX's memory you used:
- 10769 strings out of 467363
- 163631 string characters out of 5419001
- 582271 words of memory out of 6000000
- 39559 multiletter control sequences out of 15000+600000
+ 10754 strings out of 467363
+ 163266 string characters out of 5419001
+ 581271 words of memory out of 6000000
+ 39557 multiletter control sequences out of 15000+600000
  659636 words of font info for 81 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 92i,5n,95p,443b,748s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 92i,6n,95p,443b,748s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
 pdfTeX warning (dest): name{Rfn.graphics::plot\(\)} has been referenced but doe
 s not exist, replaced by a fixed one
@@ -542,10 +542,10 @@ usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texli
 ve/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/f
 onts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/
 times/utmri8a.pfb>
-Output written on Rd2.pdf (14 pages, 108034 bytes).
+Output written on Rd2.pdf (13 pages, 106304 bytes).
 PDF statistics:
- 327 PDF objects out of 1000 (max. 8388607)
- 296 compressed objects within 3 object streams
- 120 named destinations out of 1000 (max. 500000)
- 145 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 298 PDF objects out of 1000 (max. 8388607)
+ 268 compressed objects within 3 object streams
+ 107 named destinations out of 1000 (max. 500000)
+ 129 words of extra memory for PDF output out of 10000 (max. 10000000)
 

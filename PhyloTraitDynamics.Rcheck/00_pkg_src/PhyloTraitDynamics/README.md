@@ -50,11 +50,10 @@ mrca_age_plot_dynamics()
 ### Espérance de la variance empirique
 
 ```r
+birth_death_brownian_simulate()
 empirical_variance_compute_expectation()
-empirical_variance_simulate()
 empirical_variance_summarise_simulation()
 empirical_variance_plot_expectation()
-empirical_variance_plot_paths()
 ```
 
 Convention préservée : la variance empirique vaut 0 quand il y a moins de deux lignées vivantes.
@@ -71,11 +70,10 @@ Il n'y a pas de conditionnement à `N(t) >= 2` ni à la survie à un temps final
 ### Variance de la moyenne empirique
 
 ```r
+birth_death_brownian_simulate()
 empirical_mean_compute_variance()
-empirical_mean_simulate()
 empirical_mean_summarise_simulation()
 empirical_mean_plot_variance()
-empirical_mean_plot_paths()
 ```
 
 La théorie actuellement exposée correspond à :

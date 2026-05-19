@@ -15,7 +15,6 @@
 #'
 #' @param tree A phylogenetic tree of class `"phylo"`.
 #' @param sigma2 Brownian variance parameter.
-#' @param time_start Start of the time grid.
 #' @param time_end End of the time grid. If `NULL`, the maximum tree time is
 #'   used.
 #' @param time_step Time step used to define the time grid.
@@ -28,9 +27,9 @@
 #' @export
 fixed_tree_compute_theoretical_summary <- function(tree,
                                                    sigma2 = 1,
-                                                   time_start = 0,
                                                    time_end = NULL,
                                                    time_step) {
+  time_start = 0,
   if (is.null(time_end)) {
     time_end <- .fixed_tree_get_max_time(tree)
   }
@@ -448,7 +447,7 @@ fixed_tree_plot_brownian_realization <- function(
 		stop("The dataframe must contain columns : time, q25, q50, q75, mean")
 	}
 	cexA <- 1
-	graphics::par(cex.axis = cexA*0.9, cex.lab = cexA, cex.main = cexA)
+#	graphics::par(cex.axis = cexA*0.9, cex.lab = cexA, cex.main = cexA)
 	# Median
 	graphics::plot(df$time, df$q50, type = "l", col = median_col, lty = 1, lwd = 1, ylim = range(c(df$q25, df$q75, df$mean, df$q50)), axes = FALSE, xlab = "Time", ylab = "Distribution of\n the empirical variance", cex.lab = cexA*1.1, cex.axis = cexA*1.1, mgp = c(2, 0.6, 0))
     graphics::Axis(side=1, cex.axis = cexA*1.1)
@@ -476,7 +475,7 @@ fixed_tree_plot_brownian_realization <- function(
 		stop("The dataframe must contain columns : time, q25, q50, q75, mean")
 	}
 	cexA <- 1
-	graphics::par(cex.axis = cexA*0.9, cex.lab = cexA, cex.main = cexA)
+#	graphics::par(cex.axis = cexA*0.9, cex.lab = cexA, cex.main = cexA)
 	# Median
 	graphics::plot(df$time, df$var_mean, type = "l", col = mean_variance_col, lty = 1, lwd = 1.5, ylim = range(c(df$var_mean)), axes = FALSE, xlab = NULL, ylab = "Distribution of\n the empirical mean", cex.lab = cexA*1.1, cex.axis = cexA*1.1, mgp = c(2, 0.6, 0))
   graphics::Axis(side=2, cex.axis=cexA*1.1)

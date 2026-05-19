@@ -12,4 +12,4 @@ Imports: ape, CompQuadForm, graphics, grDevices, stats
 Suggests: phytools
 Config/roxygen2/version: 8.0.0
 NeedsCompilation: no
-Packaged: 2026-05-18 17:34:57 UTC; gilles
+Packaged: 2026-05-19 10:15:28 UTC; gilles

@@ -174,30 +174,6 @@ birth_death_brownian_simulate <- function(birth,
   invisible(list(lambda = lambda_vals, mu = mu_vals))
 }
 
-.birth_death_poly_rate_fun <- function(coeffs, floor_value = 0){
-  force(coeffs)
-  force(floor_value)
-
-  function(t){
-    t <- as.numeric(t)
-    out <- rep(0, length(t))
-    for (a in rev(coeffs)){
-      out <- out * t + a
-    }
-    pmax(floor_value, out)
-  }
-}
-
-.birth_death_constant_rate_fun <- function(rate){
-  if (!is.finite(rate) || rate < 0){
-    stop("'rate' must be a finite nonnegative number.")
-  }
-  force(rate)
-  function(t){
-    rep(rate, length(as.numeric(t)))
-  }
-}
-
 .birth_death_li2_series_0_05 <- function(x, tol = 1e-12, max_iter = 10000L){
   if (x == 0){
     return(0)
@@ -641,4 +617,3 @@ birth_death_brownian_simulate <- function(birth,
     empirical_variance_expectation_empirical_cond_survival = V_emp_cond_same_time
   )
 }
-

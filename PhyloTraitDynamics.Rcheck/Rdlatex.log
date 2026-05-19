@@ -78,34 +78,34 @@ No file Rd2.toc.
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1ptm.fd) [1{/var/lib/texmf/fo
 nts/map/pdftex/updmap/pdftex.map}{/usr/share/texlive/texmf-dist/fonts/enc/dvips
 /base/8r.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/inconsolata/i4-t1-0
-.enc}] [2] [3] [4]
-Overfull \hbox (21.0281pt too wide) in paragraph at lines 229--231
+.enc}] [2] [3]
+Overfull \hbox (21.0281pt too wide) in paragraph at lines 195--197
 []\T1/ptm/m/n/10 Computes Monte Carlo sum-maries from a sim-u-la-tion re-turned
  by []\T1/zi4/m/n/10 birth_death_brownian_simulate()[]\T1/ptm/m/n/10 . 
-[5]
-Overfull \hbox (12.34973pt too wide) in paragraph at lines 335--337
+[4] [5]
+Overfull \hbox (12.34973pt too wide) in paragraph at lines 301--303
 []\T1/ptm/m/n/10 Optional data frame re-turned by []\T1/zi4/m/n/10 empirical_va
 riance_compute_expectation()[]\T1/ptm/m/n/10 . 
 
-Overfull \hbox (17.34973pt too wide) in paragraph at lines 338--341
+Overfull \hbox (17.34973pt too wide) in paragraph at lines 304--307
 []\T1/ptm/m/n/10 Optional data frame re-turned by []\T1/zi4/m/n/10 empirical_va
 riance_summarise_simulation()[]\T1/ptm/m/n/10 .
-[6]
-Overfull \hbox (21.0281pt too wide) in paragraph at lines 396--398
+
+Overfull \hbox (21.0281pt too wide) in paragraph at lines 328--330
 []\T1/ptm/m/n/10 Computes Monte Carlo sum-maries from a sim-u-la-tion re-turned
  by []\T1/zi4/m/n/10 birth_death_brownian_simulate()[]\T1/ptm/m/n/10 . 
-[7] [8] [9]
-Overfull \hbox (131.87958pt too wide) in paragraph at lines 512--514
+[6] [7] [8]
+Overfull \hbox (131.87958pt too wide) in paragraph at lines 444--446
 []\T1/ptm/m/n/10 A []\T1/zi4/m/n/10 fixed_tree_theoretical_summary []\T1/ptm/m/
 n/10 ob-ject, as re-turned by []\T1/zi4/m/n/10 fixed_tree_compute_theoretical_s
 ummary()[]\T1/ptm/m/n/10 . 
-[10]
-Overfull \hbox (0.15822pt too wide) in paragraph at lines 606--608
+[9]
+Overfull \hbox (0.15822pt too wide) in paragraph at lines 538--540
 []\T1/ptm/m/n/10 Optional num-ber of in-ter-nal subin-ter-vals; when sup-plied 
 it over-rides []\T1/zi4/m/n/10 time_step[]\T1/ptm/m/n/10 . 
-[11] [12]
+[10] [11]
 No file Rd2.ind.
-[13] (/tmp/RtmpUCthlY/Rd2pdf63eacad0d/Rd2.aux)
+[12] (/tmp/RtmpRha4nD/Rd2pdf62e67fd28/Rd2.aux)
 
 Package rerunfilecheck Warning: File `Rd2.out' has changed.
 (rerunfilecheck)                Rerun to get outlines right
@@ -121,12 +121,12 @@ pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share
 /texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-
 dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type
 1/urw/times/utmri8a.pfb>
-Output written on Rd2.pdf (13 pages, 94749 bytes).
+Output written on Rd2.pdf (12 pages, 93469 bytes).
 Transcript written on Rd2.log.
 This is makeindex, version 2.18 [TeX Live 2026] (kpathsea + Thai support).
-Scanning input file Rd2.idx....done (22 entries accepted, 0 rejected).
-Sorting entries....done (96 comparisons).
-Generating output file Rd2.ind....done (56 lines written, 0 warnings).
+Scanning input file Rd2.idx....done (20 entries accepted, 0 rejected).
+Sorting entries....done (86 comparisons).
+Generating output file Rd2.ind....done (54 lines written, 0 warnings).
 Output written in Rd2.ind.
 Transcript written in Rd2.ilg.
 This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex)
@@ -194,67 +194,67 @@ For additional information on amsmath, use the `?' option.
 Writing index file Rd2.idx
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1ptm.fd)
 (/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def)
-(/tmp/RtmpUCthlY/Rd2pdf63eacad0d/Rd2.aux)
+(/tmp/RtmpRha4nD/Rd2pdf62e67fd28/Rd2.aux)
 (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-) (/tmp/RtmpUCthlY/Rd2pdf63eacad0d/Rd2.out)
-(/tmp/RtmpUCthlY/Rd2pdf63eacad0d/Rd2.out)
+) (/tmp/RtmpRha4nD/Rd2pdf62e67fd28/Rd2.out)
+(/tmp/RtmpRha4nD/Rd2pdf62e67fd28/Rd2.out)
 (/usr/share/texlive/texmf-dist/tex/latex/inconsolata/t1zi4.fd)
-(/tmp/RtmpUCthlY/Rd2pdf63eacad0d/Rd2.toc
+(/tmp/RtmpRha4nD/Rd2pdf62e67fd28/Rd2.toc
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd)
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd)
 (/usr/share/texlive/texmf-dist/tex/latex/jknapltx/ursfs.fd)) [1{/var/lib/texmf/
 fonts/map/pdftex/updmap/pdftex.map}{/usr/share/texlive/texmf-dist/fonts/enc/dvi
 ps/base/8r.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/inconsolata/i4-t1
 -0.enc}] (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1ptm.fd) [2]
-[3] [4]
-Overfull \hbox (21.0281pt too wide) in paragraph at lines 229--231
+[3]
+Overfull \hbox (21.0281pt too wide) in paragraph at lines 195--197
 []\T1/ptm/m/n/10 Computes Monte Carlo sum-maries from a sim-u-la-tion re-turned
  by []\T1/zi4/m/n/10 birth_death_brownian_simulate()[]\T1/ptm/m/n/10 . 
-[5] [6]
-Overfull \hbox (12.34973pt too wide) in paragraph at lines 335--337
+[4] [5]
+Overfull \hbox (12.34973pt too wide) in paragraph at lines 301--303
 []\T1/ptm/m/n/10 Optional data frame re-turned by []\T1/zi4/m/n/10 empirical_va
 riance_compute_expectation()[]\T1/ptm/m/n/10 . 
 
-Overfull \hbox (17.34973pt too wide) in paragraph at lines 338--341
+Overfull \hbox (17.34973pt too wide) in paragraph at lines 304--307
 []\T1/ptm/m/n/10 Optional data frame re-turned by []\T1/zi4/m/n/10 empirical_va
 riance_summarise_simulation()[]\T1/ptm/m/n/10 .
-[7]
-Overfull \hbox (21.0281pt too wide) in paragraph at lines 396--398
+
+Overfull \hbox (21.0281pt too wide) in paragraph at lines 328--330
 []\T1/ptm/m/n/10 Computes Monte Carlo sum-maries from a sim-u-la-tion re-turned
  by []\T1/zi4/m/n/10 birth_death_brownian_simulate()[]\T1/ptm/m/n/10 . 
-[8] [9]
-Overfull \hbox (131.87958pt too wide) in paragraph at lines 512--514
+[6] [7] [8]
+Overfull \hbox (131.87958pt too wide) in paragraph at lines 444--446
 []\T1/ptm/m/n/10 A []\T1/zi4/m/n/10 fixed_tree_theoretical_summary []\T1/ptm/m/
 n/10 ob-ject, as re-turned by []\T1/zi4/m/n/10 fixed_tree_compute_theoretical_s
 ummary()[]\T1/ptm/m/n/10 . 
-[10] [11]
-Overfull \hbox (0.15822pt too wide) in paragraph at lines 606--608
+[9]
+Overfull \hbox (0.15822pt too wide) in paragraph at lines 538--540
 []\T1/ptm/m/n/10 Optional num-ber of in-ter-nal subin-ter-vals; when sup-plied 
 it over-rides []\T1/zi4/m/n/10 time_step[]\T1/ptm/m/n/10 . 
-[12] (/tmp/RtmpUCthlY/Rd2pdf63eacad0d/Rd2.ind [13]
+[10] [11] (/tmp/RtmpRha4nD/Rd2pdf62e67fd28/Rd2.ind [12]
 Overfull \hbox (8.3567pt too wide) in paragraph at lines 4--6
 []| \T1/zi4/m/n/10 empirical_mean_summarise_simulation\T1/ptm/m/n/10 , 
 
 Overfull \hbox (28.3567pt too wide) in paragraph at lines 6--8
 []| \T1/zi4/m/n/10 empirical_variance_summarise_simulation\T1/ptm/m/n/10 , 
 
-Overfull \hbox (3.3567pt too wide) in paragraph at lines 21--23
+Overfull \hbox (3.3567pt too wide) in paragraph at lines 20--22
 []\T1/zi4/m/n/10 empirical_variance_compute_expectation\T1/ptm/m/n/10 , 
 
-Overfull \hbox (8.3567pt too wide) in paragraph at lines 26--28
+Overfull \hbox (8.3567pt too wide) in paragraph at lines 24--26
 []\T1/zi4/m/n/10 empirical_variance_summarise_simulation\T1/ptm/m/n/10 , 
 
-Overfull \hbox (3.3567pt too wide) in paragraph at lines 31--33
+Overfull \hbox (3.3567pt too wide) in paragraph at lines 29--31
 []\T1/zi4/m/n/10 fixed_tree_compute_theoretical_summary\T1/ptm/m/n/10 , 
 
-Overfull \hbox (13.3567pt too wide) in paragraph at lines 37--39
+Overfull \hbox (13.3567pt too wide) in paragraph at lines 35--37
 []\T1/zi4/m/n/10 fixed_tree_simulate_brownian_realization\T1/ptm/m/n/10 , 
 
 LaTeX Font Warning: Font shape `T1/zi4/m/it' undefined
-(Font)              using `T1/zi4/m/n' instead on input line 52.
+(Font)              using `T1/zi4/m/n' instead on input line 50.
 
-[14]) (/tmp/RtmpUCthlY/Rd2pdf63eacad0d/Rd2.aux)
+[13]) (/tmp/RtmpRha4nD/Rd2pdf62e67fd28/Rd2.aux)
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
@@ -274,12 +274,12 @@ usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texli
 ve/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/f
 onts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/
 times/utmri8a.pfb>
-Output written on Rd2.pdf (14 pages, 107536 bytes).
+Output written on Rd2.pdf (13 pages, 105704 bytes).
 Transcript written on Rd2.log.
 This is makeindex, version 2.18 [TeX Live 2026] (kpathsea + Thai support).
-Scanning input file Rd2.idx....done (22 entries accepted, 0 rejected).
-Sorting entries....done (96 comparisons).
-Generating output file Rd2.ind....done (56 lines written, 0 warnings).
+Scanning input file Rd2.idx....done (20 entries accepted, 0 rejected).
+Sorting entries....done (86 comparisons).
+Generating output file Rd2.ind....done (54 lines written, 0 warnings).
 Output written in Rd2.ind.
 Transcript written in Rd2.ilg.
 This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex)
@@ -347,67 +347,67 @@ For additional information on amsmath, use the `?' option.
 Writing index file Rd2.idx
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1ptm.fd)
 (/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def)
-(/tmp/RtmpUCthlY/Rd2pdf63eacad0d/Rd2.aux)
+(/tmp/RtmpRha4nD/Rd2pdf62e67fd28/Rd2.aux)
 (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-) (/tmp/RtmpUCthlY/Rd2pdf63eacad0d/Rd2.out)
-(/tmp/RtmpUCthlY/Rd2pdf63eacad0d/Rd2.out)
+) (/tmp/RtmpRha4nD/Rd2pdf62e67fd28/Rd2.out)
+(/tmp/RtmpRha4nD/Rd2pdf62e67fd28/Rd2.out)
 (/usr/share/texlive/texmf-dist/tex/latex/inconsolata/t1zi4.fd)
-(/tmp/RtmpUCthlY/Rd2pdf63eacad0d/Rd2.toc
+(/tmp/RtmpRha4nD/Rd2pdf62e67fd28/Rd2.toc
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd)
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd)
 (/usr/share/texlive/texmf-dist/tex/latex/jknapltx/ursfs.fd)) [1{/var/lib/texmf/
 fonts/map/pdftex/updmap/pdftex.map}{/usr/share/texlive/texmf-dist/fonts/enc/dvi
 ps/base/8r.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/inconsolata/i4-t1
 -0.enc}] (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1ptm.fd) [2]
-[3] [4]
-Overfull \hbox (21.0281pt too wide) in paragraph at lines 229--231
+[3]
+Overfull \hbox (21.0281pt too wide) in paragraph at lines 195--197
 []\T1/ptm/m/n/10 Computes Monte Carlo sum-maries from a sim-u-la-tion re-turned
  by []\T1/zi4/m/n/10 birth_death_brownian_simulate()[]\T1/ptm/m/n/10 . 
-[5] [6]
-Overfull \hbox (12.34973pt too wide) in paragraph at lines 335--337
+[4] [5]
+Overfull \hbox (12.34973pt too wide) in paragraph at lines 301--303
 []\T1/ptm/m/n/10 Optional data frame re-turned by []\T1/zi4/m/n/10 empirical_va
 riance_compute_expectation()[]\T1/ptm/m/n/10 . 
 
-Overfull \hbox (17.34973pt too wide) in paragraph at lines 338--341
+Overfull \hbox (17.34973pt too wide) in paragraph at lines 304--307
 []\T1/ptm/m/n/10 Optional data frame re-turned by []\T1/zi4/m/n/10 empirical_va
 riance_summarise_simulation()[]\T1/ptm/m/n/10 .
-[7]
-Overfull \hbox (21.0281pt too wide) in paragraph at lines 396--398
+
+Overfull \hbox (21.0281pt too wide) in paragraph at lines 328--330
 []\T1/ptm/m/n/10 Computes Monte Carlo sum-maries from a sim-u-la-tion re-turned
  by []\T1/zi4/m/n/10 birth_death_brownian_simulate()[]\T1/ptm/m/n/10 . 
-[8] [9]
-Overfull \hbox (131.87958pt too wide) in paragraph at lines 512--514
+[6] [7] [8]
+Overfull \hbox (131.87958pt too wide) in paragraph at lines 444--446
 []\T1/ptm/m/n/10 A []\T1/zi4/m/n/10 fixed_tree_theoretical_summary []\T1/ptm/m/
 n/10 ob-ject, as re-turned by []\T1/zi4/m/n/10 fixed_tree_compute_theoretical_s
 ummary()[]\T1/ptm/m/n/10 . 
-[10] [11]
-Overfull \hbox (0.15822pt too wide) in paragraph at lines 606--608
+[9]
+Overfull \hbox (0.15822pt too wide) in paragraph at lines 538--540
 []\T1/ptm/m/n/10 Optional num-ber of in-ter-nal subin-ter-vals; when sup-plied 
 it over-rides []\T1/zi4/m/n/10 time_step[]\T1/ptm/m/n/10 . 
-[12] (/tmp/RtmpUCthlY/Rd2pdf63eacad0d/Rd2.ind [13]
+[10] [11] (/tmp/RtmpRha4nD/Rd2pdf62e67fd28/Rd2.ind [12]
 Overfull \hbox (8.3567pt too wide) in paragraph at lines 4--6
 []| \T1/zi4/m/n/10 empirical_mean_summarise_simulation\T1/ptm/m/n/10 , 
 
 Overfull \hbox (28.3567pt too wide) in paragraph at lines 6--8
 []| \T1/zi4/m/n/10 empirical_variance_summarise_simulation\T1/ptm/m/n/10 , 
 
-Overfull \hbox (3.3567pt too wide) in paragraph at lines 21--23
+Overfull \hbox (3.3567pt too wide) in paragraph at lines 20--22
 []\T1/zi4/m/n/10 empirical_variance_compute_expectation\T1/ptm/m/n/10 , 
 
-Overfull \hbox (8.3567pt too wide) in paragraph at lines 26--28
+Overfull \hbox (8.3567pt too wide) in paragraph at lines 24--26
 []\T1/zi4/m/n/10 empirical_variance_summarise_simulation\T1/ptm/m/n/10 , 
 
-Overfull \hbox (3.3567pt too wide) in paragraph at lines 31--33
+Overfull \hbox (3.3567pt too wide) in paragraph at lines 29--31
 []\T1/zi4/m/n/10 fixed_tree_compute_theoretical_summary\T1/ptm/m/n/10 , 
 
-Overfull \hbox (13.3567pt too wide) in paragraph at lines 37--39
+Overfull \hbox (13.3567pt too wide) in paragraph at lines 35--37
 []\T1/zi4/m/n/10 fixed_tree_simulate_brownian_realization\T1/ptm/m/n/10 , 
 
 LaTeX Font Warning: Font shape `T1/zi4/m/it' undefined
-(Font)              using `T1/zi4/m/n' instead on input line 52.
+(Font)              using `T1/zi4/m/n' instead on input line 50.
 
-[14]) (/tmp/RtmpUCthlY/Rd2pdf63eacad0d/Rd2.aux)
+[13]) (/tmp/RtmpRha4nD/Rd2pdf62e67fd28/Rd2.aux)
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
@@ -422,8 +422,8 @@ usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texli
 ve/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/f
 onts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/
 times/utmri8a.pfb>
-Output written on Rd2.pdf (14 pages, 108034 bytes).
+Output written on Rd2.pdf (13 pages, 106304 bytes).
 Transcript written on Rd2.log.
 Saving output to ‘PhyloTraitDynamics-manual.pdf’ ...
 Done
-You may want to clean up by 'rm -Rf /tmp/RtmpUCthlY/Rd2pdf63eacad0d'
+You may want to clean up by 'rm -Rf /tmp/RtmpRha4nD/Rd2pdf62e67fd28'
