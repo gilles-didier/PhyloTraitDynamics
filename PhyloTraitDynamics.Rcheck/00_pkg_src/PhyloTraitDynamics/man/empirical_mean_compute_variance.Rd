@@ -28,8 +28,7 @@ of time.}
 
 \item{n_steps}{Number of integration steps for numerical theory.}
 
-\item{tol_sing, li2_tol}{Numerical tolerances passed to the original
-implementation.}
+\item{tol_sing, li2_tol}{Numerical tolerances.}
 }
 \value{
 A data frame with time, survival probability, empirical mean

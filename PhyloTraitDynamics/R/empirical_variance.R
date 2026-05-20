@@ -265,51 +265,6 @@ empirical_variance_plot_expectation <- function(simulation = NULL,
   list(lambda = lambda, mu = mu)
 }
 
-.empirical_variance_li2_real_scalar <- function(z, tol = 1e-12, max_iter = 10000L){
-  ## Real dilogarithm Li_2(z) on the real domain z <= 1.
-  ## This is enough for the constant birth-death closed forms below.
-  if (!is.finite(z)){
-    stop("Non-finite argument passed to .empirical_variance_li2_real().")
-  }
-  if (z > 1 + 1e-12){
-    stop(".empirical_variance_li2_real() is implemented only for real arguments <= 1.")
-  }
-  if (z > 1){
-    z <- 1
-  }
-  if (z == 1){
-    return(pi^2 / 6)
-  }
-  if (z == 0){
-    return(0)
-  }
-
-  if (z < 0){
-    ## Li_2(z) = -Li_2(z/(z-1)) - 1/2 log(1-z)^2.
-    w <- z / (z - 1)
-    return(-.empirical_variance_li2_real_scalar(w, tol = tol, max_iter = max_iter) -
-             0.5 * log1p(-z)^2)
-  }
-
-  if (z <= 0.5){
-    return(.birth_death_li2_series_0_05(z, tol = tol, max_iter = max_iter))
-  }
-
-  ## Li_2(z) = pi^2/6 - log(z) log(1-z) - Li_2(1-z).
-  pi^2 / 6 - log(z) * log1p(-z) -
-    .empirical_variance_li2_real_scalar(1 - z, tol = tol, max_iter = max_iter)
-}
-
-.empirical_variance_li2_real <- function(z, tol = 1e-12, max_iter = 10000L){
-  vapply(
-    as.numeric(z),
-    .empirical_variance_li2_real_scalar,
-    numeric(1),
-    tol = tol,
-    max_iter = as.integer(max_iter)
-  )
-}
-
 .empirical_variance_constant_bd_survival <- function(lambda, mu, t, critical_tol = 1e-10){
   t <- as.numeric(t)
   if (lambda < 0 || mu < 0){
@@ -357,7 +312,7 @@ empirical_variance_plot_expectation <- function(simulation = NULL,
       lambda * tt^2 / (1 + lambda * tt) -
       4 * tt +
       (2 / lambda) * log1p(lambda * tt) +
-      (2 * (1 + lambda * tt) / lambda) * .empirical_variance_li2_real(z, tol = li2_tol)
+      (2 * (1 + lambda * tt) / lambda) * .dilogarithm_li2_real(z, tol = li2_tol)
 
     out[nz] <- sigma2 / (1 + lambda * tt) * bracket
     return(pmax(0, out))
@@ -374,7 +329,7 @@ empirical_variance_plot_expectation <- function(simulation = NULL,
     z <- 1 - exp(lambda * tt)
     out[nz] <- sigma2 * (
       tt * (1 - e_yule) -
-        (2 / lambda) * (1 - e_yule + e_yule * .empirical_variance_li2_real(z, tol = li2_tol))
+        (2 / lambda) * (1 - e_yule + e_yule * .dilogarithm_li2_real(z, tol = li2_tol))
     )
     return(pmax(0, out))
   }
@@ -396,8 +351,8 @@ empirical_variance_plot_expectation <- function(simulation = NULL,
     2 * (1 - e) / r +
     (2 * e / lambda) * log(log_arg) -
     (2 * e * denom / (lambda * r)) *
-    (.empirical_variance_li2_real(li2_arg_1, tol = li2_tol) -
-       .empirical_variance_li2_real(li2_arg_2, tol = li2_tol))
+    (.dilogarithm_li2_real(li2_arg_1, tol = li2_tol) -
+       .dilogarithm_li2_real(li2_arg_2, tol = li2_tol))
 
   out[nz] <- sigma2 * r / denom * bracket
   pmax(0, out)

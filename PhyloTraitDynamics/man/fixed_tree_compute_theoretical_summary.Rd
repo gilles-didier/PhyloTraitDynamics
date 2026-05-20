@@ -7,7 +7,6 @@
 fixed_tree_compute_theoretical_summary(
   tree,
   sigma2 = 1,
-  time_start = 0,
   time_end = NULL,
   time_step
 )
@@ -16,8 +15,6 @@ fixed_tree_compute_theoretical_summary(
 \item{tree}{A phylogenetic tree of class \code{"phylo"}.}
 
 \item{sigma2}{Brownian variance parameter.}
-
-\item{time_start}{Start of the time grid.}
 
 \item{time_end}{End of the time grid. If \code{NULL}, the maximum tree time is
 used.}

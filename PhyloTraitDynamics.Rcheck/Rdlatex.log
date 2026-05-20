@@ -79,19 +79,19 @@ No file Rd2.toc.
 nts/map/pdftex/updmap/pdftex.map}{/usr/share/texlive/texmf-dist/fonts/enc/dvips
 /base/8r.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/inconsolata/i4-t1-0
 .enc}] [2] [3]
-Overfull \hbox (21.0281pt too wide) in paragraph at lines 195--197
+Overfull \hbox (21.0281pt too wide) in paragraph at lines 194--196
 []\T1/ptm/m/n/10 Computes Monte Carlo sum-maries from a sim-u-la-tion re-turned
  by []\T1/zi4/m/n/10 birth_death_brownian_simulate()[]\T1/ptm/m/n/10 . 
 [4] [5]
-Overfull \hbox (12.34973pt too wide) in paragraph at lines 301--303
+Overfull \hbox (12.34973pt too wide) in paragraph at lines 300--302
 []\T1/ptm/m/n/10 Optional data frame re-turned by []\T1/zi4/m/n/10 empirical_va
 riance_compute_expectation()[]\T1/ptm/m/n/10 . 
 
-Overfull \hbox (17.34973pt too wide) in paragraph at lines 304--307
+Overfull \hbox (17.34973pt too wide) in paragraph at lines 303--306
 []\T1/ptm/m/n/10 Optional data frame re-turned by []\T1/zi4/m/n/10 empirical_va
 riance_summarise_simulation()[]\T1/ptm/m/n/10 .
 
-Overfull \hbox (21.0281pt too wide) in paragraph at lines 328--330
+Overfull \hbox (21.0281pt too wide) in paragraph at lines 327--329
 []\T1/ptm/m/n/10 Computes Monte Carlo sum-maries from a sim-u-la-tion re-turned
  by []\T1/zi4/m/n/10 birth_death_brownian_simulate()[]\T1/ptm/m/n/10 . 
 [6] [7] [8]
@@ -100,12 +100,12 @@ Overfull \hbox (131.87958pt too wide) in paragraph at lines 444--446
 n/10 ob-ject, as re-turned by []\T1/zi4/m/n/10 fixed_tree_compute_theoretical_s
 ummary()[]\T1/ptm/m/n/10 . 
 [9]
-Overfull \hbox (0.15822pt too wide) in paragraph at lines 538--540
+Overfull \hbox (0.15822pt too wide) in paragraph at lines 540--542
 []\T1/ptm/m/n/10 Optional num-ber of in-ter-nal subin-ter-vals; when sup-plied 
 it over-rides []\T1/zi4/m/n/10 time_step[]\T1/ptm/m/n/10 . 
 [10] [11]
 No file Rd2.ind.
-[12] (/tmp/RtmpRha4nD/Rd2pdf62e67fd28/Rd2.aux)
+[12] (/tmp/RtmpKzxL51/Rd2pdf67221e4f2/Rd2.aux)
 
 Package rerunfilecheck Warning: File `Rd2.out' has changed.
 (rerunfilecheck)                Rerun to get outlines right
@@ -121,7 +121,7 @@ pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share
 /texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-
 dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type
 1/urw/times/utmri8a.pfb>
-Output written on Rd2.pdf (12 pages, 93469 bytes).
+Output written on Rd2.pdf (12 pages, 93474 bytes).
 Transcript written on Rd2.log.
 This is makeindex, version 2.18 [TeX Live 2026] (kpathsea + Thai support).
 Scanning input file Rd2.idx....done (20 entries accepted, 0 rejected).
@@ -194,13 +194,13 @@ For additional information on amsmath, use the `?' option.
 Writing index file Rd2.idx
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1ptm.fd)
 (/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def)
-(/tmp/RtmpRha4nD/Rd2pdf62e67fd28/Rd2.aux)
+(/tmp/RtmpKzxL51/Rd2pdf67221e4f2/Rd2.aux)
 (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-) (/tmp/RtmpRha4nD/Rd2pdf62e67fd28/Rd2.out)
-(/tmp/RtmpRha4nD/Rd2pdf62e67fd28/Rd2.out)
+) (/tmp/RtmpKzxL51/Rd2pdf67221e4f2/Rd2.out)
+(/tmp/RtmpKzxL51/Rd2pdf67221e4f2/Rd2.out)
 (/usr/share/texlive/texmf-dist/tex/latex/inconsolata/t1zi4.fd)
-(/tmp/RtmpRha4nD/Rd2pdf62e67fd28/Rd2.toc
+(/tmp/RtmpKzxL51/Rd2pdf67221e4f2/Rd2.toc
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd)
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd)
 (/usr/share/texlive/texmf-dist/tex/latex/jknapltx/ursfs.fd)) [1{/var/lib/texmf/
@@ -208,19 +208,19 @@ fonts/map/pdftex/updmap/pdftex.map}{/usr/share/texlive/texmf-dist/fonts/enc/dvi
 ps/base/8r.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/inconsolata/i4-t1
 -0.enc}] (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1ptm.fd) [2]
 [3]
-Overfull \hbox (21.0281pt too wide) in paragraph at lines 195--197
+Overfull \hbox (21.0281pt too wide) in paragraph at lines 194--196
 []\T1/ptm/m/n/10 Computes Monte Carlo sum-maries from a sim-u-la-tion re-turned
  by []\T1/zi4/m/n/10 birth_death_brownian_simulate()[]\T1/ptm/m/n/10 . 
 [4] [5]
-Overfull \hbox (12.34973pt too wide) in paragraph at lines 301--303
+Overfull \hbox (12.34973pt too wide) in paragraph at lines 300--302
 []\T1/ptm/m/n/10 Optional data frame re-turned by []\T1/zi4/m/n/10 empirical_va
 riance_compute_expectation()[]\T1/ptm/m/n/10 . 
 
-Overfull \hbox (17.34973pt too wide) in paragraph at lines 304--307
+Overfull \hbox (17.34973pt too wide) in paragraph at lines 303--306
 []\T1/ptm/m/n/10 Optional data frame re-turned by []\T1/zi4/m/n/10 empirical_va
 riance_summarise_simulation()[]\T1/ptm/m/n/10 .
 
-Overfull \hbox (21.0281pt too wide) in paragraph at lines 328--330
+Overfull \hbox (21.0281pt too wide) in paragraph at lines 327--329
 []\T1/ptm/m/n/10 Computes Monte Carlo sum-maries from a sim-u-la-tion re-turned
  by []\T1/zi4/m/n/10 birth_death_brownian_simulate()[]\T1/ptm/m/n/10 . 
 [6] [7] [8]
@@ -229,10 +229,10 @@ Overfull \hbox (131.87958pt too wide) in paragraph at lines 444--446
 n/10 ob-ject, as re-turned by []\T1/zi4/m/n/10 fixed_tree_compute_theoretical_s
 ummary()[]\T1/ptm/m/n/10 . 
 [9]
-Overfull \hbox (0.15822pt too wide) in paragraph at lines 538--540
+Overfull \hbox (0.15822pt too wide) in paragraph at lines 540--542
 []\T1/ptm/m/n/10 Optional num-ber of in-ter-nal subin-ter-vals; when sup-plied 
 it over-rides []\T1/zi4/m/n/10 time_step[]\T1/ptm/m/n/10 . 
-[10] [11] (/tmp/RtmpRha4nD/Rd2pdf62e67fd28/Rd2.ind [12]
+[10] [11] (/tmp/RtmpKzxL51/Rd2pdf67221e4f2/Rd2.ind [12]
 Overfull \hbox (8.3567pt too wide) in paragraph at lines 4--6
 []| \T1/zi4/m/n/10 empirical_mean_summarise_simulation\T1/ptm/m/n/10 , 
 
@@ -254,7 +254,7 @@ Overfull \hbox (13.3567pt too wide) in paragraph at lines 35--37
 LaTeX Font Warning: Font shape `T1/zi4/m/it' undefined
 (Font)              using `T1/zi4/m/n' instead on input line 50.
 
-[13]) (/tmp/RtmpRha4nD/Rd2pdf62e67fd28/Rd2.aux)
+[13]) (/tmp/RtmpKzxL51/Rd2pdf67221e4f2/Rd2.aux)
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
@@ -274,7 +274,7 @@ usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texli
 ve/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/f
 onts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/
 times/utmri8a.pfb>
-Output written on Rd2.pdf (13 pages, 105704 bytes).
+Output written on Rd2.pdf (13 pages, 105702 bytes).
 Transcript written on Rd2.log.
 This is makeindex, version 2.18 [TeX Live 2026] (kpathsea + Thai support).
 Scanning input file Rd2.idx....done (20 entries accepted, 0 rejected).
@@ -347,13 +347,13 @@ For additional information on amsmath, use the `?' option.
 Writing index file Rd2.idx
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1ptm.fd)
 (/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def)
-(/tmp/RtmpRha4nD/Rd2pdf62e67fd28/Rd2.aux)
+(/tmp/RtmpKzxL51/Rd2pdf67221e4f2/Rd2.aux)
 (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-) (/tmp/RtmpRha4nD/Rd2pdf62e67fd28/Rd2.out)
-(/tmp/RtmpRha4nD/Rd2pdf62e67fd28/Rd2.out)
+) (/tmp/RtmpKzxL51/Rd2pdf67221e4f2/Rd2.out)
+(/tmp/RtmpKzxL51/Rd2pdf67221e4f2/Rd2.out)
 (/usr/share/texlive/texmf-dist/tex/latex/inconsolata/t1zi4.fd)
-(/tmp/RtmpRha4nD/Rd2pdf62e67fd28/Rd2.toc
+(/tmp/RtmpKzxL51/Rd2pdf67221e4f2/Rd2.toc
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd)
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd)
 (/usr/share/texlive/texmf-dist/tex/latex/jknapltx/ursfs.fd)) [1{/var/lib/texmf/
@@ -361,19 +361,19 @@ fonts/map/pdftex/updmap/pdftex.map}{/usr/share/texlive/texmf-dist/fonts/enc/dvi
 ps/base/8r.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/inconsolata/i4-t1
 -0.enc}] (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1ptm.fd) [2]
 [3]
-Overfull \hbox (21.0281pt too wide) in paragraph at lines 195--197
+Overfull \hbox (21.0281pt too wide) in paragraph at lines 194--196
 []\T1/ptm/m/n/10 Computes Monte Carlo sum-maries from a sim-u-la-tion re-turned
  by []\T1/zi4/m/n/10 birth_death_brownian_simulate()[]\T1/ptm/m/n/10 . 
 [4] [5]
-Overfull \hbox (12.34973pt too wide) in paragraph at lines 301--303
+Overfull \hbox (12.34973pt too wide) in paragraph at lines 300--302
 []\T1/ptm/m/n/10 Optional data frame re-turned by []\T1/zi4/m/n/10 empirical_va
 riance_compute_expectation()[]\T1/ptm/m/n/10 . 
 
-Overfull \hbox (17.34973pt too wide) in paragraph at lines 304--307
+Overfull \hbox (17.34973pt too wide) in paragraph at lines 303--306
 []\T1/ptm/m/n/10 Optional data frame re-turned by []\T1/zi4/m/n/10 empirical_va
 riance_summarise_simulation()[]\T1/ptm/m/n/10 .
 
-Overfull \hbox (21.0281pt too wide) in paragraph at lines 328--330
+Overfull \hbox (21.0281pt too wide) in paragraph at lines 327--329
 []\T1/ptm/m/n/10 Computes Monte Carlo sum-maries from a sim-u-la-tion re-turned
  by []\T1/zi4/m/n/10 birth_death_brownian_simulate()[]\T1/ptm/m/n/10 . 
 [6] [7] [8]
@@ -382,10 +382,10 @@ Overfull \hbox (131.87958pt too wide) in paragraph at lines 444--446
 n/10 ob-ject, as re-turned by []\T1/zi4/m/n/10 fixed_tree_compute_theoretical_s
 ummary()[]\T1/ptm/m/n/10 . 
 [9]
-Overfull \hbox (0.15822pt too wide) in paragraph at lines 538--540
+Overfull \hbox (0.15822pt too wide) in paragraph at lines 540--542
 []\T1/ptm/m/n/10 Optional num-ber of in-ter-nal subin-ter-vals; when sup-plied 
 it over-rides []\T1/zi4/m/n/10 time_step[]\T1/ptm/m/n/10 . 
-[10] [11] (/tmp/RtmpRha4nD/Rd2pdf62e67fd28/Rd2.ind [12]
+[10] [11] (/tmp/RtmpKzxL51/Rd2pdf67221e4f2/Rd2.ind [12]
 Overfull \hbox (8.3567pt too wide) in paragraph at lines 4--6
 []| \T1/zi4/m/n/10 empirical_mean_summarise_simulation\T1/ptm/m/n/10 , 
 
@@ -407,7 +407,7 @@ Overfull \hbox (13.3567pt too wide) in paragraph at lines 35--37
 LaTeX Font Warning: Font shape `T1/zi4/m/it' undefined
 (Font)              using `T1/zi4/m/n' instead on input line 50.
 
-[13]) (/tmp/RtmpRha4nD/Rd2pdf62e67fd28/Rd2.aux)
+[13]) (/tmp/RtmpKzxL51/Rd2pdf67221e4f2/Rd2.aux)
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
@@ -422,8 +422,8 @@ usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texli
 ve/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/f
 onts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/
 times/utmri8a.pfb>
-Output written on Rd2.pdf (13 pages, 106304 bytes).
+Output written on Rd2.pdf (13 pages, 106305 bytes).
 Transcript written on Rd2.log.
 Saving output to ‘PhyloTraitDynamics-manual.pdf’ ...
 Done
-You may want to clean up by 'rm -Rf /tmp/RtmpRha4nD/Rd2pdf62e67fd28'
+You may want to clean up by 'rm -Rf /tmp/RtmpKzxL51/Rd2pdf67221e4f2'

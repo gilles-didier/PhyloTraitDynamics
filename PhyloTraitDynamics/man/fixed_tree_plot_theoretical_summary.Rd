@@ -13,7 +13,8 @@ fixed_tree_plot_theoretical_summary(
   band_col = grDevices::adjustcolor("red", alpha.f = 0.18),
   expectation_col = "blue",
   median_col = "red",
-  mean_variance_col = "darkgreen"
+  mean_variance_col = "darkgreen",
+  cex = 1
 )
 }
 \arguments{
@@ -36,6 +37,8 @@ tree attached to \code{x} is used when available.}
 \item{median_col}{Color used for the empirical-variance median and quartiles.}
 
 \item{mean_variance_col}{Color used for the empirical-mean variance.}
+
+\item{cex}{Character expansion factor passed to base graphics parameters.}
 }
 \value{
 Invisibly returns \code{x}.

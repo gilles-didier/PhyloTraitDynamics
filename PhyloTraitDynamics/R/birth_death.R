@@ -174,28 +174,6 @@ birth_death_brownian_simulate <- function(birth,
   invisible(list(lambda = lambda_vals, mu = mu_vals))
 }
 
-.birth_death_li2_series_0_05 <- function(x, tol = 1e-12, max_iter = 10000L){
-  if (x == 0){
-    return(0)
-  }
-
-  term <- x
-  out <- term
-
-  for (k in 2:max_iter){
-    term <- term * x
-    add <- term / (k * k)
-    out <- out + add
-
-    if (abs(add) <= tol * max(1, abs(out))){
-      return(out)
-    }
-  }
-
-  warning("Dilogarithm series did not reach the requested tolerance.")
-  out
-}
-
 .birth_death_solve_reconstructed_process <- function(lambda_fun, mu_fun, t,
                                         n_steps = 1200,
                                         check_rates = TRUE){

@@ -23,8 +23,7 @@
 #' @param sigma2 Brownian variance parameter.
 #' @param time_end,time_step Time grid definition.
 #' @param n_steps Number of integration steps for numerical theory.
-#' @param tol_sing,li2_tol Numerical tolerances passed to the original
-#'   implementation.
+#' @param tol_sing,li2_tol Numerical tolerances.
 #'
 #' @return A data frame with time, survival probability, empirical mean
 #'   variance, and conditioning columns. The original script result is attached
@@ -225,47 +224,6 @@ empirical_mean_plot_variance <- function(simulation = NULL,
 ## ================================================================
 
 ## ================================================================
-## 0b) Real dilogarithm Li_2(z) on 0 <= z <= 1
-##     This is the only domain needed by the integral below.
-## ================================================================
-
-.empirical_mean_li2_01_scalar <- function(z, tol = 1e-12, max_iter = 10000L){
-  if (!is.finite(z)){
-    stop("Non-finite argument passed to .empirical_mean_li2_01().")
-  }
-  if (z < -1e-12 || z > 1 + 1e-12){
-    stop(".empirical_mean_li2_01() is implemented only for 0 <= z <= 1.")
-  }
-
-  z <- min(1, max(0, z))
-
-  if (z == 0){
-    return(0)
-  }
-  if (z == 1){
-    return(pi^2 / 6)
-  }
-  if (z <= 0.5){
-    return(.birth_death_li2_series_0_05(z, tol = tol, max_iter = max_iter))
-  }
-
-  ## Li_2(z) = pi^2/6 - log(z) log(1-z) - Li_2(1-z)
-  pi^2 / 6 - log(z) * log1p(-z) -
-    .birth_death_li2_series_0_05(1 - z, tol = tol, max_iter = max_iter)
-}
-
-.empirical_mean_li2_01 <- function(z, tol = 1e-12, max_iter = 10000L){
-  vapply(
-    as.numeric(z),
-    .empirical_mean_li2_01_scalar,
-    numeric(1),
-    tol = tol,
-    max_iter = as.integer(max_iter)
-  )
-}
-
-
-## ================================================================
 ## 1) Reconstructed process at fixed final time t
 ##    Solve backward:
 ##      g_t'(w) = (lambda(w) - mu(w)) g_t(w) - lambda(w),
@@ -322,8 +280,8 @@ empirical_mean_plot_variance <- function(simulation = NULL,
   arg_delta <- 1 - exp(-pmax(a - xx, 0))
   arg_a <- 1 - exp(-a)
 
-  dli <- .empirical_mean_li2_01(arg_delta, tol = li2_tol) -
-    .empirical_mean_li2_01(arg_a, tol = li2_tol)
+  dli <- .dilogarithm_li2_01(arg_delta, tol = li2_tol) -
+    .dilogarithm_li2_01(arg_a, tol = li2_tol)
 
   out[keep] <-
     1 + a / denom_a -

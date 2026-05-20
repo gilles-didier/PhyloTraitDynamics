@@ -29,7 +29,7 @@ fixed_tree_compute_theoretical_summary <- function(tree,
                                                    sigma2 = 1,
                                                    time_end = NULL,
                                                    time_step) {
-  time_start = 0,
+  time_start <- 0
   if (is.null(time_end)) {
     time_end <- .fixed_tree_get_max_time(tree)
   }
@@ -80,6 +80,7 @@ fixed_tree_compute_theoretical_summary <- function(tree,
 #' @param expectation_col Color used for the empirical-variance expectation.
 #' @param median_col Color used for the empirical-variance median and quartiles.
 #' @param mean_variance_col Color used for the empirical-mean variance.
+#' @param cex Character expansion factor passed to base graphics parameters.
 #'
 #' @return Invisibly returns `x`.
 #'
@@ -93,7 +94,8 @@ fixed_tree_plot_theoretical_summary <- function(
   band_col = grDevices::adjustcolor("red", alpha.f = 0.18),
   expectation_col = "blue",
   median_col = "red",
-  mean_variance_col = "darkgreen"
+  mean_variance_col = "darkgreen",
+  cex = 1
 ) {
   theory <- .fixed_tree_extract_original_theory(x)
 
@@ -113,7 +115,7 @@ fixed_tree_plot_theoretical_summary <- function(
 
     graphics::layout(matrix(c(1, 2, 3), ncol = 1),
                      heights = c(1, 1.25, 2))
-
+	graphics::par(cex = cex)
     graphics::par(mar = c(0, 4, 1, 0.1))
     phytools::plotTree(tree,
                        direction = "rightwards",
@@ -211,6 +213,7 @@ fixed_tree_simulate_brownian_realization <- function(tree,
 #' @param x A `fixed_tree_brownian_realization` object.
 #' @param n_bands Number of time bands shown by the original plotting routine.
 #' @param time_band_col Color used for time bands.
+#' @param cex Character expansion factor passed to base graphics parameters.
 #'
 #' @return Invisibly returns `x`.
 #'
@@ -218,18 +221,105 @@ fixed_tree_simulate_brownian_realization <- function(tree,
 fixed_tree_plot_brownian_realization <- function(
   x,
   n_bands = 10,
-  time_band_col = grDevices::adjustcolor("blue", alpha.f = 0.05)
+  time_band_col = grDevices::adjustcolor("blue", alpha.f = 0.05),
+  cex = 1
 ) {
   if (!inherits(x, "fixed_tree_brownian_realization")) {
     stop("'x' must be a 'fixed_tree_brownian_realization' object.")
   }
 
-  .fixed_tree_plot_simulation_with_tree(
-    df = x$data,
-    tree = x$tree,
-    n_bands = n_bands,
-    time_band_col = time_band_col
-  )
+    df <- x$data
+    tree <- x$tree
+	branch_cols <- grep("^branch_", colnames(df))
+	nedge <- nrow(tree$edge)
+
+	branch_color <- c("blue", "red", "green", "orange", "cyan", "brown", "darkgreen", "deeppink")
+	branch_color <- rep(branch_color, length.out = nedge)
+
+	bands <- .fixed_tree_compute_band_limits(0, max(df$time), n_bands)
+
+  op <- graphics::par(no.readonly = TRUE)
+  on.exit(graphics::par(op))
+
+  graphics::layout(matrix(1:4, ncol = 1), heights = c(2, 3, 2, 3))
+    graphics::par(cex = cex)
+	## Panel 1: tree
+	graphics::par(mar = c(0, 4, 1, 0.1))
+
+	graphics::plot(tree,
+	     direction = "rightwards",
+	     show.tip.label = FALSE,
+	     edge.color = branch_color,
+	     edge.width = 3)
+
+	.fixed_tree_add_time_bands(bands, col = time_band_col)
+
+	## Panel 2: branch values
+	graphics::par(mar = c(0, 4, 0, 0.1))
+
+	graphics::plot(df$time, df$branch_1,
+	     type = "n",
+	     ylim = range(df[, branch_cols]*2, na.rm = TRUE),
+	     xlab = "",
+	     ylab = "",
+	     bty = "n",
+	     xaxt = "n",
+	     yaxt = "n",
+	     mgp = c(1, 0.6, 0))
+
+	.fixed_tree_add_time_bands(bands, col = time_band_col)
+
+	graphics::mtext("Brownian\ntrait", side = 2, line = 0, cex = cex)
+	graphics::lines(df$time, df$branch_1,
+	      col = grDevices::adjustcolor(branch_color[1], alpha.f = 0.7),
+	      lwd = 1)
+
+	if (nedge >= 2) {
+		for (j in 2:nedge) {
+			graphics::lines(df$time, df[[paste0("branch_", j)]],
+			      col = grDevices::adjustcolor(branch_color[j], alpha.f = 0.7),
+			      lwd = 1)
+		}
+	}
+
+  ## Panel 3: empirical mean
+  graphics::par(mar = c(0, 4, 0, 0.1))
+
+  graphics::plot(df$time, df[, "empirical_mean"],
+       type = "n",
+       ylim = range(df[, "empirical_mean"]*2, na.rm = TRUE),
+       xlab = "",
+       ylab = "",
+       bty = "n",
+       xaxt = "n",
+       yaxt = "n",
+       mgp = c(1, 0.6, 0))
+
+  .fixed_tree_add_time_bands(bands, col = time_band_col)
+
+  graphics::mtext("Empirical\nmean", side = 2, line = 0, cex = cex)
+  graphics::lines(df$time, df[, "empirical_mean"],
+        col = "black",
+        lwd = 1)
+
+	## Panel 4: empirical variance
+	graphics::par(mar = c(4, 4, 0, 0.1))
+
+	graphics::plot(df$time, df[, "empirical_variance"],
+	     type = "n",
+	     ylim = range(df[, "empirical_variance"]*2, na.rm = TRUE),
+	     xlab = "Time",
+	     ylab = "",
+	     bty = "n",
+	     xaxt = "s",
+	     yaxt = "n",
+	     mgp = c(1, 0.6, 0))
+
+	.fixed_tree_add_time_bands(bands, col = time_band_col)
+	graphics::mtext("Empirical\nvariance", side = 2, line = 0, cex = cex)
+	graphics::lines(df$time, df[, "empirical_variance"],
+	      col = "black",
+	      lwd = 1)
 
   invisible(x)
 }
@@ -446,12 +536,10 @@ fixed_tree_plot_brownian_realization <- function(
 	if(!all(c("time", "q25", "q50", "q75", "mean", "var") %in% colnames(df))) {
 		stop("The dataframe must contain columns : time, q25, q50, q75, mean")
 	}
-	cexA <- 1
-#	graphics::par(cex.axis = cexA*0.9, cex.lab = cexA, cex.main = cexA)
 	# Median
-	graphics::plot(df$time, df$q50, type = "l", col = median_col, lty = 1, lwd = 1, ylim = range(c(df$q25, df$q75, df$mean, df$q50)), axes = FALSE, xlab = "Time", ylab = "Distribution of\n the empirical variance", cex.lab = cexA*1.1, cex.axis = cexA*1.1, mgp = c(2, 0.6, 0))
-    graphics::Axis(side=1, cex.axis = cexA*1.1)
-    graphics::Axis(side=2, cex.axis = cexA*1.1)
+	graphics::plot(df$time, df$q50, type = "l", col = median_col, lty = 1, lwd = 1, ylim = range(c(df$q25, df$q75, df$mean, df$q50)), axes = FALSE, xlab = "Time", ylab = "Empirical variance\ndistribution", mgp = c(2, 0.6, 0))
+    graphics::Axis(side=1)
+    graphics::Axis(side=2)
 
 	# Quartiles
 	graphics::lines(df$time, df$q25, col = median_col, lty = 2, lwd = 1)
@@ -467,22 +555,20 @@ fixed_tree_plot_brownian_realization <- function(
 
 	graphics::legend("topleft", legend = c("Expectation", "Median", "Quartiles"),
 	col = c(expectation_col, median_col, median_col), lty = c(1,1,2), lwd = c(0.5, 1.5, 1),
-	bty = "n", cex = cexA*1.1)
+	bty = "n")
 }
 
 .fixed_tree_plot_empmean_var <- function(df, mean_variance_col = "darkgreen") {
 	if(!all(c("time", "q25", "q50", "q75", "mean", "var") %in% colnames(df))) {
 		stop("The dataframe must contain columns : time, q25, q50, q75, mean")
 	}
-	cexA <- 1
-#	graphics::par(cex.axis = cexA*0.9, cex.lab = cexA, cex.main = cexA)
 	# Median
-	graphics::plot(df$time, df$var_mean, type = "l", col = mean_variance_col, lty = 1, lwd = 1.5, ylim = range(c(df$var_mean)), axes = FALSE, xlab = NULL, ylab = "Distribution of\n the empirical mean", cex.lab = cexA*1.1, cex.axis = cexA*1.1, mgp = c(2, 0.6, 0))
-  graphics::Axis(side=2, cex.axis=cexA*1.1)
+	graphics::plot(df$time, df$var_mean, type = "l", col = mean_variance_col, lty = 1, lwd = 1.5, ylim = range(c(df$var_mean)), axes = FALSE, xlab = NULL, ylab = "Empirical mean\ndistribution", mgp = c(2, 0.6, 0))
+    graphics::Axis(side=2)
 
 	graphics::legend("topleft", legend = c("Variance"),
 	col = c(mean_variance_col), lty = c(1), lwd = c(1.5),
-	bty = "n", cex = cexA*1.1)
+	bty = "n")
 }
 
 .fixed_tree_simulate_bm_on_tree <- function(tree, dt = 0.01, sigma = 1) {
@@ -523,103 +609,4 @@ fixed_tree_plot_brownian_realization <- function(
 	  mean(x)
 	})
   	df
-}
-
-.fixed_tree_plot_simulation_with_tree <- function(df, tree, n_bands = 10,
-                                                  time_band_col = grDevices::adjustcolor("blue", alpha.f = 0.05)) {
-	branch_cols <- grep("^branch_", colnames(df))
-	nedge <- nrow(tree$edge)
-
-	branch_color <- c("blue", "red", "green", "orange", "cyan", "brown", "darkgreen", "deeppink")
-	branch_color <- rep(branch_color, length.out = nedge)
-
-	bands <- .fixed_tree_compute_band_limits(0, max(df$time), n_bands)
-
-  op <- graphics::par(no.readonly = TRUE)
-  on.exit(graphics::par(op))
-
-  graphics::layout(matrix(1:4, ncol = 1), heights = c(2, 3, 2, 2))
-
-	## Panel 1: tree
-	graphics::par(mar = c(0, 4, 1, 0.1))
-
-	graphics::plot(tree,
-	     direction = "rightwards",
-	     show.tip.label = FALSE,
-	     edge.color = branch_color,
-	     edge.width = 3)
-
-	.fixed_tree_add_time_bands(bands, col = time_band_col)
-
-	## Panel 2: branch values
-	graphics::par(mar = c(0, 4, 0, 0.1))
-
-	graphics::plot(df$time, df$branch_1,
-	     type = "n",
-	     ylim = range(df[, branch_cols]*2, na.rm = TRUE),
-	     xlab = "",
-	     ylab = "",
-	     bty = "n",
-	     xaxt = "n",
-	     yaxt = "n",
-	     cex.lab = 1.5,
-	     mgp = c(1, 0.6, 0))
-
-	.fixed_tree_add_time_bands(bands, col = time_band_col)
-
-	graphics::mtext("Brownian trait", side = 2, line = 0, cex = 1)
-	graphics::lines(df$time, df$branch_1,
-	      col = grDevices::adjustcolor(branch_color[1], alpha.f = 0.7),
-	      lwd = 1)
-
-	if (nedge >= 2) {
-		for (j in 2:nedge) {
-			graphics::lines(df$time, df[[paste0("branch_", j)]],
-			      col = grDevices::adjustcolor(branch_color[j], alpha.f = 0.7),
-			      lwd = 1)
-		}
-	}
-
-  ## Panel 3: empirical mean
-  graphics::par(mar = c(0, 4, 0, 0.1))
-
-  graphics::plot(df$time, df[, "empirical_mean"],
-       type = "n",
-       ylim = range(df[, "empirical_mean"]*2, na.rm = TRUE),
-       xlab = "",
-       ylab = "",
-       bty = "n",
-       cex.lab = 1.75,
-       cex.axis = 1.5,
-       xaxt = "n",
-       yaxt = "n",
-       mgp = c(1, 0.6, 0))
-
-  .fixed_tree_add_time_bands(bands, col = time_band_col)
-
-  graphics::mtext("Empirical mean", side = 2, line = 0, cex = 1)
-  graphics::lines(df$time, df[, "empirical_mean"],
-        col = "black",
-        lwd = 1)
-
-	## Panel 4: empirical variance
-	graphics::par(mar = c(4, 4, 0, 0.1))
-
-	graphics::plot(df$time, df[, "empirical_variance"],
-	     type = "n",
-	     ylim = range(df[, "empirical_variance"]*2, na.rm = TRUE),
-	     xlab = "Time",
-	     ylab = "",
-	     bty = "n",
-	     cex.lab = 1.75,
-	     cex.axis = 1.5,
-	     xaxt = "s",
-	     yaxt = "n",
-	     mgp = c(1, 0.6, 0))
-
-	.fixed_tree_add_time_bands(bands, col = time_band_col)
-	graphics::mtext("Empirical variance", side = 2, line = 0, cex = 1)
-	graphics::lines(df$time, df[, "empirical_variance"],
-	      col = "black",
-	      lwd = 1)
 }

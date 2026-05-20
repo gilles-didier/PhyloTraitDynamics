@@ -7,7 +7,8 @@
 fixed_tree_plot_brownian_realization(
   x,
   n_bands = 10,
-  time_band_col = grDevices::adjustcolor("blue", alpha.f = 0.05)
+  time_band_col = grDevices::adjustcolor("blue", alpha.f = 0.05),
+  cex = 1
 )
 }
 \arguments{
@@ -16,6 +17,8 @@ fixed_tree_plot_brownian_realization(
 \item{n_bands}{Number of time bands shown by the original plotting routine.}
 
 \item{time_band_col}{Color used for time bands.}
+
+\item{cex}{Character expansion factor passed to base graphics parameters.}
 }
 \value{
 Invisibly returns \code{x}.

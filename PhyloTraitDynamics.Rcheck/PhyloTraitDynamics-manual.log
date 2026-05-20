@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.5.19)  19 MAY 2026 12:15
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.5.19)  20 MAY 2026 00:12
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -356,7 +356,7 @@ File: t1ptm.fd 2001/06/04 font definitions for T1/ptm.
 File: l3backend-pdftex.def 2026-02-18 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count315
 )
-(/tmp/RtmpRha4nD/Rd2pdf62e67fd28/Rd2.aux)
+(/tmp/RtmpKzxL51/Rd2pdf67221e4f2/Rd2.aux)
 \openout1 = `Rd2.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 8.
@@ -393,8 +393,8 @@ LaTeX Font Info:    ... okay on input line 8.
 \everyMPtoPDFconversion=\toks29
 )
 Package hyperref Info: Link coloring ON on input line 8.
- (/tmp/RtmpRha4nD/Rd2pdf62e67fd28/Rd2.out)
-(/tmp/RtmpRha4nD/Rd2pdf62e67fd28/Rd2.out)
+ (/tmp/RtmpKzxL51/Rd2pdf67221e4f2/Rd2.out)
+(/tmp/RtmpKzxL51/Rd2pdf67221e4f2/Rd2.out)
 \@outlinefile=\write4
 \openout4 = `Rd2.out'.
 
@@ -407,7 +407,7 @@ File: t1zi4.fd 2018/01/14 T1/zi4 (Inconsolata)
 LaTeX Font Info:    Font shape `T1/zi4/m/n' will be
 (Font)              scaled to size 10.0pt on input line 21.
 
-(/tmp/RtmpRha4nD/Rd2pdf62e67fd28/Rd2.toc
+(/tmp/RtmpKzxL51/Rd2pdf67221e4f2/Rd2.toc
 LaTeX Font Info:    Trying to load font information for U+msa on input line 1.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
@@ -439,25 +439,25 @@ LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 4
 File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
 ) [2]
 [3]
-Overfull \hbox (21.0281pt too wide) in paragraph at lines 195--197
+Overfull \hbox (21.0281pt too wide) in paragraph at lines 194--196
 []\T1/ptm/m/n/10 Computes Monte Carlo sum-maries from a sim-u-la-tion re-turned
  by []\T1/zi4/m/n/10 birth_death_brownian_simulate()[]\T1/ptm/m/n/10 . 
  []
 
 [4] [5]
-Overfull \hbox (12.34973pt too wide) in paragraph at lines 301--303
+Overfull \hbox (12.34973pt too wide) in paragraph at lines 300--302
 []\T1/ptm/m/n/10 Optional data frame re-turned by []\T1/zi4/m/n/10 empirical_va
 riance_compute_expectation()[]\T1/ptm/m/n/10 . 
  []
 
 
-Overfull \hbox (17.34973pt too wide) in paragraph at lines 304--307
+Overfull \hbox (17.34973pt too wide) in paragraph at lines 303--306
 []\T1/ptm/m/n/10 Optional data frame re-turned by []\T1/zi4/m/n/10 empirical_va
 riance_summarise_simulation()[]\T1/ptm/m/n/10 .
  []
 
 
-Overfull \hbox (21.0281pt too wide) in paragraph at lines 328--330
+Overfull \hbox (21.0281pt too wide) in paragraph at lines 327--329
 []\T1/ptm/m/n/10 Computes Monte Carlo sum-maries from a sim-u-la-tion re-turned
  by []\T1/zi4/m/n/10 birth_death_brownian_simulate()[]\T1/ptm/m/n/10 . 
  []
@@ -470,12 +470,12 @@ ummary()[]\T1/ptm/m/n/10 .
  []
 
 [9]
-Overfull \hbox (0.15822pt too wide) in paragraph at lines 538--540
+Overfull \hbox (0.15822pt too wide) in paragraph at lines 540--542
 []\T1/ptm/m/n/10 Optional num-ber of in-ter-nal subin-ter-vals; when sup-plied 
 it over-rides []\T1/zi4/m/n/10 time_step[]\T1/ptm/m/n/10 . 
  []
 
-[10] [11] (/tmp/RtmpRha4nD/Rd2pdf62e67fd28/Rd2.ind [12]
+[10] [11] (/tmp/RtmpKzxL51/Rd2pdf67221e4f2/Rd2.ind [12]
 Overfull \hbox (8.3567pt too wide) in paragraph at lines 4--6
 []| \T1/zi4/m/n/10 empirical_mean_summarise_simulation\T1/ptm/m/n/10 , 
  []
@@ -512,7 +512,7 @@ LaTeX Font Warning: Font shape `T1/zi4/m/it' undefined
 [13
 
 
-]) (/tmp/RtmpRha4nD/Rd2pdf62e67fd28/Rd2.aux)
+]) (/tmp/RtmpKzxL51/Rd2pdf67221e4f2/Rd2.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2026-03-20>
@@ -542,7 +542,7 @@ usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texli
 ve/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/f
 onts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/
 times/utmri8a.pfb>
-Output written on Rd2.pdf (13 pages, 106304 bytes).
+Output written on Rd2.pdf (13 pages, 106305 bytes).
 PDF statistics:
  298 PDF objects out of 1000 (max. 8388607)
  268 compressed objects within 3 object streams
