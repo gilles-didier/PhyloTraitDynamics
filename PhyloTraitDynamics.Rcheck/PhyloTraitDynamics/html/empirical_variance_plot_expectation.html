@@ -30,7 +30,6 @@ theoretical expectation on a common set of axes.
 <pre><code class='language-R'>empirical_variance_plot_expectation(
   simulation = NULL,
   theory = NULL,
-  summary = NULL,
   show_paths = TRUE,
   conditioning = c("none", "survival"),
   max_paths = Inf,
@@ -53,12 +52,6 @@ theoretical expectation on a common set of axes.
 <td>
 <p>Optional data frame returned by
 <code>empirical_variance_compute_expectation()</code>.</p>
-</td></tr>
-<tr><td><code id="summary">summary</code></td>
-<td>
-<p>Optional data frame returned by
-<code>empirical_variance_summarise_simulation()</code>. If omitted and <code>simulation</code> is
-supplied, it is computed automatically.</p>
 </td></tr>
 <tr><td><code id="show_paths">show_paths</code></td>
 <td>

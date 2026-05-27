@@ -1,10 +1,10 @@
 Package: PhyloTraitDynamics
 Title: Companion Code for Phylogenetic Trait Dynamics
 Version: 0.1.0
-Authors@R: person(given = "Gilles", family = "Didier", role = c("aut", "cre"), email = "gilles.didier@free.fr")
+Authors@R: person(given = "Gilles", family = "Didier", role = c("aut", "cre"), email = "gilles.didier@umontpellier.fr")
 Author: Gilles Didier
-Maintainer: Gilles Didier <gilles.didier@free.fr>
-Description: Conservative companion package for reproducing numerical results and figures for an article on birth-death processes, MRCA ages, and Brownian empirical moments on phylogenies. The package exposes a small public API with package-local implementations.
+Maintainer: Gilles Didier <gilles.didier@umontpellier.fr>
+Description: Companion code for the article "Phylogenetic dynamics of MRCA ages and empirical moments of a Brownian trait". Public functions assume inputs consistent with the article's assumptions.
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)

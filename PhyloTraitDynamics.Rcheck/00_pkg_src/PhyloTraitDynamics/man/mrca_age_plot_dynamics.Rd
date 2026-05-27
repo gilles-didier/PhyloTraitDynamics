@@ -26,7 +26,7 @@ mrca_age_plot_dynamics(
 
 \item{add_legend}{Logical; whether to draw the plot legend.}
 
-\item{...}{Additional arguments passed to \code{\link[graphics:plot]{graphics::plot()}}.}
+\item{...}{Additional graphical arguments.}
 }
 \value{
 Invisibly returns \code{x}.

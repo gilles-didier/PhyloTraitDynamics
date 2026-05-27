@@ -7,7 +7,6 @@
 empirical_variance_plot_expectation(
   simulation = NULL,
   theory = NULL,
-  summary = NULL,
   show_paths = TRUE,
   conditioning = c("none", "survival"),
   max_paths = Inf,
@@ -22,10 +21,6 @@ empirical_variance_plot_expectation(
 
 \item{theory}{Optional data frame returned by
 \code{empirical_variance_compute_expectation()}.}
-
-\item{summary}{Optional data frame returned by
-\code{empirical_variance_summarise_simulation()}. If omitted and \code{simulation} is
-supplied, it is computed automatically.}
 
 \item{show_paths}{Logical; whether to draw individual simulated paths.}
 

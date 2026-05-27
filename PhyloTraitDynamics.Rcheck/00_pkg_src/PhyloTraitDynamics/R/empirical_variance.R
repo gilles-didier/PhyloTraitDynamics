@@ -1,5 +1,5 @@
 ## ================================================================
-## Uses shared birth-death utilities from birth_death_utils.R.
+## Uses shared internal birth-death utilities.
 ## ================================================================
 
 ## ================================================================
@@ -86,30 +86,6 @@ empirical_variance_compute_expectation <- function(birth,
 }
 
 
-#' Summarise an Empirical Variance Simulation
-#'
-#' Computes Monte Carlo summaries from a simulation returned by
-#' `birth_death_brownian_simulate()`.
-#'
-#' @param x An `"empirical_variance_simulation"` object.
-#'
-#' @return A data frame with time, empirical survival probability,
-#'   unconditional Monte Carlo mean empirical variance, and survival-conditioned
-#'   Monte Carlo mean empirical variance.
-#'
-#' @keywords internal
-empirical_variance_summarise_simulation <- function(x) {
-  if (!inherits(x, "empirical_variance_simulation")) {
-    stop("'x' must be the output of birth_death_brownian_simulate().", call. = FALSE)
-  }
-
-  if (!is.null(x$summary)) {
-    return(x$summary)
-  }
-
-  .birth_death_brownian_summarise_replicates(x)
-}
-
 
 #' Plot Expected Empirical Variance
 #'
@@ -119,9 +95,6 @@ empirical_variance_summarise_simulation <- function(x) {
 #' @param simulation Optional `"empirical_variance_simulation"` object.
 #' @param theory Optional data frame returned by
 #'   `empirical_variance_compute_expectation()`.
-#' @param summary Optional data frame returned by
-#'   `empirical_variance_summarise_simulation()`. If omitted and `simulation` is
-#'   supplied, it is computed automatically.
 #' @param show_paths Logical; whether to draw individual simulated paths.
 #' @param conditioning Which expectation to plot.
 #' @param max_paths Maximum number of simulated paths to draw.
@@ -134,7 +107,6 @@ empirical_variance_summarise_simulation <- function(x) {
 #' @export
 empirical_variance_plot_expectation <- function(simulation = NULL,
                                                 theory = NULL,
-                                                summary = NULL,
                                                 show_paths = TRUE,
                                                 conditioning = c("none", "survival"),
                                                 max_paths = Inf,
@@ -143,7 +115,7 @@ empirical_variance_plot_expectation <- function(simulation = NULL,
                                                 xlab = "time",
                                                 ylab = "Empirical variance") {
   conditioning <- match.arg(conditioning)
-
+  summary = NULL
   if (!is.null(simulation) && !inherits(simulation, "empirical_variance_simulation")) {
     stop("'simulation' must be NULL or the output of birth_death_brownian_simulate().", call. = FALSE)
   }
@@ -152,8 +124,8 @@ empirical_variance_plot_expectation <- function(simulation = NULL,
     stop("At least one of 'simulation' and 'theory' must be supplied.", call. = FALSE)
   }
 
-  if (is.null(summary) && !is.null(simulation)) {
-    summary <- empirical_variance_summarise_simulation(simulation)
+  if (!is.null(simulation)) {
+    summary <- simulation$summary
   }
 
   y <- c(0)
@@ -403,14 +375,7 @@ empirical_variance_plot_expectation <- function(simulation = NULL,
 
 
 ## ================================================================
-## 1) Reconstructed process at fixed final time t
-##    Solve backward:
-##      g_t'(w) = (lambda(w) - mu(w)) g_t(w) - lambda(w),
-##      g_t(t)  = 1.
-## ================================================================
-
-## ================================================================
-## 2) Stable integrands for the theoretical expectations
+## 1) Stable integrands for the theoretical expectations
 ## ================================================================
 
 .empirical_variance_fprob_from_phi <- function(phi_s, phi_t, tol = 1e-8){
@@ -439,7 +404,7 @@ empirical_variance_plot_expectation <- function(simulation = NULL,
 }
 
 ## ================================================================
-## 3) Theory on a time grid
+## 2) Theory on a time grid
 ## ================================================================
 
 .empirical_variance_compute_theory_BD_BM <- function(lambda_fun, mu_fun, sigma2, grid,
@@ -526,9 +491,3 @@ empirical_variance_plot_expectation <- function(simulation = NULL,
     reconstructed = reconstructed
   )
 }
-
-## ================================================================
-## 4) Inhomogeneous birth-death Brownian simulation
-##
-## Simulation is now handled by birth_death_brownian_simulate() and
-## its internal helpers in birth_death.R.

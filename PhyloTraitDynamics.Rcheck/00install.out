@@ -12,12 +12,9 @@
     birth_death_brownian_simulate           html  
     empirical_mean_compute_variance         html  
     empirical_mean_plot_variance            html  
-    empirical_mean_summarise_simulation     html  
     empirical_variance_compute_expectation
                                             html  
     empirical_variance_plot_expectation     html  
-    empirical_variance_summarise_simulation
-                                            html  
     fixed_tree_compute_theoretical_summary
                                             html  
     fixed_tree_plot_brownian_realization    html  

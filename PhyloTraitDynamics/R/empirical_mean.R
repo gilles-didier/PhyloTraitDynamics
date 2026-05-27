@@ -1,5 +1,5 @@
 ## ================================================================
-## Uses shared birth-death utilities from birth_death_utils.R.
+## Uses shared internal birth-death utilities.
 ## ================================================================
 
 ## ================================================================
@@ -69,32 +69,6 @@ empirical_mean_compute_variance <- function(birth,
   out
 }
 
-
-#' Summarise an Empirical Mean Simulation
-#'
-#' Computes Monte Carlo summaries from a simulation returned by
-#' `birth_death_brownian_simulate()`.
-#'
-#' @param x An `"empirical_mean_simulation"` object.
-#'
-#' @return A data frame with time, empirical survival probability,
-#'   survival-conditioned empirical mean, and survival-conditioned variance of
-#'   the empirical mean.
-#'
-#' @keywords internal
-empirical_mean_summarise_simulation <- function(x) {
-  if (!inherits(x, "empirical_mean_simulation")) {
-    stop("'x' must be the output of birth_death_brownian_simulate().", call. = FALSE)
-  }
-
-  if (!is.null(x$summary)) {
-    return(x$summary)
-  }
-
-  .birth_death_brownian_summarise_replicates(x)
-}
-
-
 #' Plot Variance of the Empirical Mean
 #'
 #' Plots Monte Carlo summaries and/or theoretical values for the variance of the
@@ -103,9 +77,6 @@ empirical_mean_summarise_simulation <- function(x) {
 #' @param simulation Optional `"empirical_mean_simulation"` object.
 #' @param theory Optional data frame returned by
 #'   `empirical_mean_compute_variance()`.
-#' @param summary Optional data frame returned by
-#'   `empirical_mean_summarise_simulation()`. If omitted and `simulation` is
-#'   supplied, it is computed automatically.
 #' @param main,xlab,ylab Base graphics labels.
 #'
 #' @return Invisibly returns a list containing `simulation`, `theory`, and
@@ -114,16 +85,16 @@ empirical_mean_summarise_simulation <- function(x) {
 #' @export
 empirical_mean_plot_variance <- function(simulation = NULL,
                                          theory = NULL,
-                                         summary = NULL,
                                          main = NULL,
                                          xlab = "time",
                                          ylab = "Variance of empirical mean") {
+  summary = NULL
   if (!is.null(simulation) && !inherits(simulation, "empirical_mean_simulation")) {
     stop("'simulation' must be NULL or the output of birth_death_brownian_simulate().", call. = FALSE)
   }
 
-  if (is.null(summary) && !is.null(simulation)) {
-    summary <- empirical_mean_summarise_simulation(simulation)
+  if (!is.null(simulation)) {
+    summary <- simulation$summary
   }
 
   y <- c(0)
@@ -201,21 +172,7 @@ empirical_mean_plot_variance <- function(simulation = NULL,
 ## Time-dependent birth-death process + Brownian traits
 ## Variance of the empirical mean, conditional on survival
 ## ---------------------------------------------------------------
-## This script provides:
-##   - numerical theory for Var( empirical mean at time t | N(t) > 0 ),
-##   - inhomogeneous birth-death simulation by thinning,
-##   - Brownian trait simulation on the living lineages,
-##   - Monte Carlo estimation of Var( empirical mean | N(t) > 0 ),
-##   - comparison and plotting utilities.
-##
-## There is deliberately:
-##   - no closed-form special handling for constant rates,
-##   - no conditioning on N(t) >= 2,
-##   - no conditioning on survival at a final time T.
-##
-## A single simulated replicate produces a trajectory of the empirical mean,
-## not a trajectory of its variance. The variance curve is estimated across
-## Monte Carlo replicates, at each time point, conditional on N(t) > 0.
+## This script provides numerical theory for Var( empirical mean at time t | N(t) > 0 ),
 ## ================================================================
 
 
@@ -372,10 +329,3 @@ empirical_mean_plot_variance <- function(simulation = NULL,
     reconstructed = reconstructed
   )
 }
-
-
-## ================================================================
-## 4) Inhomogeneous birth-death Brownian simulation
-##
-## Simulation is now handled by birth_death_brownian_simulate() and
-## its internal helpers in birth_death.R.

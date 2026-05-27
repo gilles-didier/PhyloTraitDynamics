@@ -7,7 +7,7 @@ Petit package R compagnon d'article pour les calculs et figures autour de :
 3. espérance de la variance empirique sous birth-death + Brownien ;
 4. variance de la moyenne empirique sous birth-death + Brownien.
 
-Le package n'est pas conçu pour le CRAN. Il sert à reproduire et organiser des scripts de calcul déjà validés.
+Il s'agit d'un package compagnon de l'article « Phylogenetic dynamics of MRCA ages and empirical moments of a Brownian trait ». Les fonctions publiques supposent des entrées cohérentes avec les hypothèses de l'article.
 
 ## Principe de construction
 

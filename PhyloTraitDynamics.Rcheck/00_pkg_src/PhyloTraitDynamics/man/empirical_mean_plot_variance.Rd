@@ -7,7 +7,6 @@
 empirical_mean_plot_variance(
   simulation = NULL,
   theory = NULL,
-  summary = NULL,
   main = NULL,
   xlab = "time",
   ylab = "Variance of empirical mean"
@@ -18,10 +17,6 @@ empirical_mean_plot_variance(
 
 \item{theory}{Optional data frame returned by
 \code{empirical_mean_compute_variance()}.}
-
-\item{summary}{Optional data frame returned by
-\code{empirical_mean_summarise_simulation()}. If omitted and \code{simulation} is
-supplied, it is computed automatically.}
 
 \item{main, xlab, ylab}{Base graphics labels.}
 }

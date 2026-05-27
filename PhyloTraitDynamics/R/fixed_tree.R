@@ -385,9 +385,9 @@ fixed_tree_plot_brownian_realization <- function(
 
   upper <- sum(evals) * max(stats::qchisq(0.9999, df = length(evals)), 10)
 
-  f25 <- function(x) CompQuadForm::davies(x, lambda = evals)$Qq - 0.25
+  f25 <- function(x) CompQuadForm::davies(x, lambda = evals)$Qq - 0.75
   f50 <- function(x) CompQuadForm::davies(x, lambda = evals)$Qq - 0.50
-  f75 <- function(x) CompQuadForm::davies(x, lambda = evals)$Qq - 0.75
+  f75 <- function(x) CompQuadForm::davies(x, lambda = evals)$Qq - 0.25
 
   q25 <- stats::uniroot(f25, lower = 0, upper = upper)$root / (n - 1)
   q50 <- stats::uniroot(f50, lower = 0, upper = upper)$root / (n - 1)
@@ -453,7 +453,7 @@ fixed_tree_plot_brownian_realization <- function(
       q75  = unname(qu["q75"]),
       mean = unname(qu["mean"]),
       var  = unname(qu["var"]),
-      var_mean = sum(C[ , ])/(n_now**2)
+      var_mean = sigma2 * sum(C[ , ])/(n_now**2)
     )
   }
 
@@ -563,12 +563,12 @@ fixed_tree_plot_brownian_realization <- function(
 		stop("The dataframe must contain columns : time, q25, q50, q75, mean")
 	}
 	# Median
-	graphics::plot(df$time, df$var_mean, type = "l", col = mean_variance_col, lty = 1, lwd = 1.5, ylim = range(c(df$var_mean)), axes = FALSE, xlab = NULL, ylab = "Empirical mean\ndistribution", mgp = c(2, 0.6, 0))
+	graphics::plot(df$time, df$var_mean, type = "l", col = mean_variance_col, lty = 1, lwd = 1.5, ylim = range(c(df$var_mean)), axes = FALSE, xlab = NULL, ylab = "Empirical mean\nvariance", mgp = c(2, 0.6, 0))
     graphics::Axis(side=2)
 
-	graphics::legend("topleft", legend = c("Variance"),
-	col = c(mean_variance_col), lty = c(1), lwd = c(1.5),
-	bty = "n")
+	# graphics::legend("topleft", legend = c("Variance"),
+	# col = c(mean_variance_col), lty = c(1), lwd = c(1.5),
+	# bty = "n")
 }
 
 .fixed_tree_simulate_bm_on_tree <- function(tree, dt = 0.01, sigma = 1) {

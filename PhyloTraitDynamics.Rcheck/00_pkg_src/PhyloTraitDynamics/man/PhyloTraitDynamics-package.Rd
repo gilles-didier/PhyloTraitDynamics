@@ -4,16 +4,18 @@
 \name{PhyloTraitDynamics-package}
 \alias{PhyloTraitDynamics}
 \alias{PhyloTraitDynamics-package}
-\title{PhyloTraitDynamics: Companion Code for Phylogenetic Trait Dynamics}
+\title{Companion code for the article "Phylogenetic dynamics of MRCA ages and
+empirical moments of a Brownian trait". Public functions assume inputs
+consistent with the article's assumptions.}
 \description{
-Conservative companion package for reproducing numerical results and figures for an article on birth-death processes, MRCA ages, and Brownian empirical moments on phylogenies. The package exposes a small public API with package-local implementations.
+Companion code for the article "Phylogenetic dynamics of MRCA ages and empirical moments of a Brownian trait". Public functions assume inputs consistent with the article's assumptions.
 }
 \author{
-\strong{Maintainer}: Gilles Didier \email{gilles.didier@free.fr}
+\strong{Maintainer}: Gilles Didier \email{gilles.didier@umontpellier.fr}
 
 Authors:
 \itemize{
-  \item Gilles Didier \email{gilles.didier@free.fr}
+  \item Gilles Didier \email{gilles.didier@umontpellier.fr}
 }
 
 }

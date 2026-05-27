@@ -1,5 +1,5 @@
 ## ============================================================
-## Uses shared birth-death utilities from birth_death_utils.R.
+## Uses shared internal birth-death utilities.
 ## ============================================================
 
 ## ============================================================
@@ -186,7 +186,7 @@ mrca_age_compute_dynamics <- function(birth,
 #' @param show_expectation Logical; whether to draw the expectation curve.
 #' @param main,xlab,ylab Base graphics labels.
 #' @param add_legend Logical; whether to draw the plot legend.
-#' @param ... Additional arguments passed to [graphics::plot()].
+#' @param ... Additional graphical arguments.
 #'
 #' @return Invisibly returns `x`.
 #'

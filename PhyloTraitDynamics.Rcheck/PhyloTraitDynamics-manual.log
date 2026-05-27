@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.5.19)  20 MAY 2026 00:12
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.5.19)  24 MAY 2026 22:03
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -356,7 +356,7 @@ File: t1ptm.fd 2001/06/04 font definitions for T1/ptm.
 File: l3backend-pdftex.def 2026-02-18 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count315
 )
-(/tmp/RtmpKzxL51/Rd2pdf67221e4f2/Rd2.aux)
+(/tmp/RtmpR4bqXY/Rd2pdf6450da56b/Rd2.aux)
 \openout1 = `Rd2.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 8.
@@ -393,8 +393,8 @@ LaTeX Font Info:    ... okay on input line 8.
 \everyMPtoPDFconversion=\toks29
 )
 Package hyperref Info: Link coloring ON on input line 8.
- (/tmp/RtmpKzxL51/Rd2pdf67221e4f2/Rd2.out)
-(/tmp/RtmpKzxL51/Rd2pdf67221e4f2/Rd2.out)
+ (/tmp/RtmpR4bqXY/Rd2pdf6450da56b/Rd2.out)
+(/tmp/RtmpR4bqXY/Rd2pdf6450da56b/Rd2.out)
 \@outlinefile=\write4
 \openout4 = `Rd2.out'.
 
@@ -406,8 +406,19 @@ File: t1zi4.fd 2018/01/14 T1/zi4 (Inconsolata)
 )
 LaTeX Font Info:    Font shape `T1/zi4/m/n' will be
 (Font)              scaled to size 10.0pt on input line 21.
+LaTeX Info: Symbol \textasciigrave not provided by
+            font family ptm in TS1 encoding.
+            Default family used instead on input line 22.
+LaTeX Info: Symbol \textasciigrave not provided by
+            font family ptm in TS1 encoding.
+            Default family used instead on input line 22.
+LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 2
+2.
 
-(/tmp/RtmpKzxL51/Rd2pdf67221e4f2/Rd2.toc
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1ptm.fd
+File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
+)
+(/tmp/RtmpR4bqXY/Rd2pdf6450da56b/Rd2.toc
 LaTeX Font Info:    Trying to load font information for U+msa on input line 1.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
@@ -432,87 +443,49 @@ File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}{/usr/share/texlive/texmf-di
 st/fonts/enc/dvips/base/8r.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/i
-nconsolata/i4-t1-0.enc}]
-LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 4
-6.
- (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1ptm.fd
-File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
-) [2]
-[3]
-Overfull \hbox (21.0281pt too wide) in paragraph at lines 194--196
-[]\T1/ptm/m/n/10 Computes Monte Carlo sum-maries from a sim-u-la-tion re-turned
- by []\T1/zi4/m/n/10 birth_death_brownian_simulate()[]\T1/ptm/m/n/10 . 
- []
-
-[4] [5]
-Overfull \hbox (12.34973pt too wide) in paragraph at lines 300--302
+nconsolata/i4-t1-0.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/cm-super/
+cm-super-ts1.enc}] [2] [3] [4]
+Overfull \hbox (12.34973pt too wide) in paragraph at lines 269--271
 []\T1/ptm/m/n/10 Optional data frame re-turned by []\T1/zi4/m/n/10 empirical_va
 riance_compute_expectation()[]\T1/ptm/m/n/10 . 
  []
 
-
-Overfull \hbox (17.34973pt too wide) in paragraph at lines 303--306
-[]\T1/ptm/m/n/10 Optional data frame re-turned by []\T1/zi4/m/n/10 empirical_va
-riance_summarise_simulation()[]\T1/ptm/m/n/10 .
- []
-
-
-Overfull \hbox (21.0281pt too wide) in paragraph at lines 327--329
-[]\T1/ptm/m/n/10 Computes Monte Carlo sum-maries from a sim-u-la-tion re-turned
- by []\T1/zi4/m/n/10 birth_death_brownian_simulate()[]\T1/ptm/m/n/10 . 
- []
-
-[6] [7] [8]
-Overfull \hbox (131.87958pt too wide) in paragraph at lines 444--446
+[5] [6] [7]
+Overfull \hbox (131.87958pt too wide) in paragraph at lines 384--386
 []\T1/ptm/m/n/10 A []\T1/zi4/m/n/10 fixed_tree_theoretical_summary []\T1/ptm/m/
 n/10 ob-ject, as re-turned by []\T1/zi4/m/n/10 fixed_tree_compute_theoretical_s
 ummary()[]\T1/ptm/m/n/10 . 
  []
 
-[9]
-Overfull \hbox (0.15822pt too wide) in paragraph at lines 540--542
+[8]
+Overfull \hbox (0.15822pt too wide) in paragraph at lines 480--482
 []\T1/ptm/m/n/10 Optional num-ber of in-ter-nal subin-ter-vals; when sup-plied 
 it over-rides []\T1/zi4/m/n/10 time_step[]\T1/ptm/m/n/10 . 
  []
 
-[10] [11] (/tmp/RtmpKzxL51/Rd2pdf67221e4f2/Rd2.ind [12]
-Overfull \hbox (8.3567pt too wide) in paragraph at lines 4--6
-[]| \T1/zi4/m/n/10 empirical_mean_summarise_simulation\T1/ptm/m/n/10 , 
- []
-
-
-Overfull \hbox (28.3567pt too wide) in paragraph at lines 6--8
-[]| \T1/zi4/m/n/10 empirical_variance_summarise_simulation\T1/ptm/m/n/10 , 
- []
-
-
-Overfull \hbox (3.3567pt too wide) in paragraph at lines 20--22
+[9] [10] (/tmp/RtmpR4bqXY/Rd2pdf6450da56b/Rd2.ind [11]
+Overfull \hbox (3.3567pt too wide) in paragraph at lines 14--16
 []\T1/zi4/m/n/10 empirical_variance_compute_expectation\T1/ptm/m/n/10 , 
  []
 
 
-Overfull \hbox (8.3567pt too wide) in paragraph at lines 24--26
-[]\T1/zi4/m/n/10 empirical_variance_summarise_simulation\T1/ptm/m/n/10 , 
- []
-
-
-Overfull \hbox (3.3567pt too wide) in paragraph at lines 29--31
+Overfull \hbox (3.3567pt too wide) in paragraph at lines 21--23
 []\T1/zi4/m/n/10 fixed_tree_compute_theoretical_summary\T1/ptm/m/n/10 , 
  []
 
 
-Overfull \hbox (13.3567pt too wide) in paragraph at lines 35--37
+Overfull \hbox (13.3567pt too wide) in paragraph at lines 27--29
 []\T1/zi4/m/n/10 fixed_tree_simulate_brownian_realization\T1/ptm/m/n/10 , 
  []
 
 
 LaTeX Font Warning: Font shape `T1/zi4/m/it' undefined
-(Font)              using `T1/zi4/m/n' instead on input line 50.
+(Font)              using `T1/zi4/m/n' instead on input line 38.
 
-[13
+[12
 
 
-]) (/tmp/RtmpKzxL51/Rd2pdf67221e4f2/Rd2.aux)
+]) (/tmp/RtmpR4bqXY/Rd2pdf6450da56b/Rd2.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2026-03-20>
@@ -522,30 +495,27 @@ L3 programming layer <2026-03-20>
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
 Package rerunfilecheck Info: File `Rd2.out' has not changed.
-(rerunfilecheck)             Checksum: 6E7C767AA664F4DEC8078FF14190BF34;3917.
+(rerunfilecheck)             Checksum: 49E71EDE72EE105A1C2CDE8C25E99ADF;3349.
  ) 
 Here is how much of TeX's memory you used:
- 10754 strings out of 467363
- 163266 string characters out of 5419001
- 581271 words of memory out of 6000000
- 39557 multiletter control sequences out of 15000+600000
- 659636 words of font info for 81 fonts, out of 8000000 for 9000
+ 10743 strings out of 467363
+ 162892 string characters out of 5419001
+ 580271 words of memory out of 6000000
+ 39558 multiletter control sequences out of 15000+600000
+ 659971 words of font info for 82 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 92i,6n,95p,443b,748s stack positions out of 10000i,1000n,20000p,200000b,200000s
-
-pdfTeX warning (dest): name{Rfn.graphics::plot\(\)} has been referenced but doe
-s not exist, replaced by a fixed one
-
-</usr/share/texlive/texmf-dist/fonts/type1/public/inconsolata/Inconsolata-zi4r.
-pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></
-usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texli
-ve/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/f
-onts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/
-times/utmri8a.pfb>
-Output written on Rd2.pdf (13 pages, 106305 bytes).
+ 92i,5n,95p,443b,746s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</usr/share/texlive/texmf-dist/fonts/type1/public/inconsolata/Inconsolata-zi4
+r.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
+</usr/share/texlive/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/s
+hare/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/te
+xmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/
+type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times
+/utmri8a.pfb>
+Output written on Rd2.pdf (12 pages, 111734 bytes).
 PDF statistics:
- 298 PDF objects out of 1000 (max. 8388607)
- 268 compressed objects within 3 object streams
- 107 named destinations out of 1000 (max. 500000)
- 129 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 270 PDF objects out of 1000 (max. 8388607)
+ 239 compressed objects within 3 object streams
+ 93 named destinations out of 1000 (max. 500000)
+ 113 words of extra memory for PDF output out of 10000 (max. 10000000)
 
