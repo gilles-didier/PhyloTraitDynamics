@@ -48,6 +48,7 @@ library(PhyloTraitDynamics)
 The repository contains:
 
 - the R package implementing the functionalities above;
+- its manual, `PhyloTraitDynamics-manual.pdf`;
 - the R script used to generate the figures of the manuscript, `scriptFigures.R`.
 
 ## Citation
