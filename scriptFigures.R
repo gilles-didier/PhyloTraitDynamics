@@ -1,4 +1,3 @@
-install.packages("~/Dropbox/Variance/dev/git/PhyloTraitDynamics_0.1.0.tar.gz", repos = NULL, type="source")
 library(PhyloTraitDynamics)
 library(ape)
 library(TreeSim)
