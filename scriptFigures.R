@@ -5,7 +5,7 @@ library(TreeSim)
 #Simulation Brownian realisation on fixed tree Figure 1
 tree <- read.tree(text = "(((A:0.2,B:0.2):0.3,C:0.4):0.5,(D:0.8, E:0.4):0.2);")
 df <- fixed_tree_simulate_brownian_realization(tree, sigma2 = 100, time_step=0.001, seed=2222)
-pdf(file = "~/Dropbox/Variance/man/figures/simulationExt_R.pdf", width = 10, height = 7.5)
+pdf(file = "simulationExt_R.pdf", width = 10, height = 7.5)
 fixed_tree_plot_brownian_realization(df, cex=1.3)
 dev.off()
 
@@ -20,7 +20,7 @@ df <- fixed_tree_compute_theoretical_summary(
   sigma2 = 1,
   time_end = NULL,
   time_step = 0.001)
-pdf(file = "~/Dropbox/Variance/man/figures/SimuTreeDist_R.pdf", width = 10, height = 7.5)
+pdf(file = "SimuTreeDist_R.pdf", width = 10, height = 7.5)
 fixed_tree_plot_theoretical_summary(df, cex = 1.3)
 dev.off()
 
@@ -29,7 +29,7 @@ step <- 0.005
 res2_1 <- mrca_age_compute_dynamics(birth = 2,  death = 1, time_end = 5, time_step=step)
 res2_2 <- mrca_age_compute_dynamics(birth = 2,  death = 2, time_end = 5, time_step=step)
 res2_3 <- mrca_age_compute_dynamics(birth = 2,  death = 3, time_end = 5, time_step=step)
-pdf(file = "~/Dropbox/Variance/man/figures/MRCA_age_R.pdf", width = 10, height = 15)
+pdf(file = "MRCA_age_R.pdf", width = 10, height = 15)
 op <- par(mfrow = c(3, 1))
 par(cex = 1.3, mar = c(2, 4, 2, 1), oma = c(4, 3, 0, 0))
 mrca_age_plot_dynamics(res2_1, main=expression(paste("Supercritical, ", lambda, " = 2, ", mu, " = 1")), xlab = "", ylab = "")
@@ -59,7 +59,7 @@ varCoCri <- empirical_variance_compute_expectation(birth = 2,  death = 2, time_e
 varCoSub <- empirical_variance_compute_expectation(birth = 2,  death = 3, time_end = 5, time_step=step, method ="numeric", conditioning="survival")
 
 #Empirical mean variance, conditioned on survival, Figure 4
-pdf(file = "~/Dropbox/Variance/man/figures/Mean_Variance_Empirical_Mean_R.pdf", width = 10, height = 15)
+pdf(file = "Mean_Variance_Empirical_Mean_R.pdf", width = 10, height = 15)
 op <- par(mfrow = c(3, 1))
 	par(cex = 1.3, mar = c(2, 4, 2, 1), oma = c(4, 3, 0, 0))
 	ylim <- range(simSur$summary$empirical_mean_variance_empirical_cond_survival, meanSur$empirical_mean_variance, na.rm = TRUE)
@@ -78,7 +78,7 @@ dev.off()
 
 
 #Expected empirical variance, unconditioned, Figure 5
-pdf(file = "~/Dropbox/Variance/man/figures/Mean_Expected_Empirical_Variance_Un_R.pdf", width = 10, height = 15)
+pdf(file = "Mean_Expected_Empirical_Variance_Un_R.pdf", width = 10, height = 15)
 op <- par(mfrow = c(3, 1))
 	par(cex = 1.3, mar = c(2, 4, 2, 1), oma = c(4, 3, 0, 0))
 	ylim <- range(simSur$summary$empirical_variance_expectation_empirical, varUnSur$empirical_variance_expectation, na.rm = TRUE)
@@ -96,7 +96,7 @@ mtext("Time", side = 1, outer = TRUE, line = 1., cex = 1.3)
 dev.off()
 
 #Expected empirical variance, conditioned on survival, Figure 6
-pdf(file = "~/Dropbox/Variance/man/figures/Mean_Expected_Empirical_Variance_Co_R.pdf", width = 10, height = 15)
+pdf(file = "Mean_Expected_Empirical_Variance_Co_R.pdf", width = 10, height = 15)
 op <- par(mfrow = c(3, 1))
 	par(cex = 1.3, mar = c(2, 4, 2, 1), oma = c(4, 3, 0, 0))
 	ylim <- range(simSur$summary$empirical_variance_expectation_empirical_cond_survival, varCoSur$empirical_variance_expectation, na.rm = TRUE)
@@ -169,7 +169,7 @@ fun_bump <- function(a, b, center = 2.5, width = 0.6) {
 	simVar <- birth_death_brownian_simulate(birth = birth, death = death, sigma2 = 1, time_end = time_end, time_step = step, B = nb_simul, x0 = 0, seed = 1)
 	bands <- compute_band_limits(0, time_end)
 	
-	pdf(file = "~/Dropbox/Variance/man/figures/VariableRates_Paths_R.pdf", width = 10, height = 10)
+	pdf(file = "VariableRates_Paths_R.pdf", width = 10, height = 10)
 	layout(matrix(1:4, ncol = 1), heights = c(0.8, 1, 1, 1.5))
 	par(cex = 1.3)
 	par(mar = c(0, 6, 2, 1))
