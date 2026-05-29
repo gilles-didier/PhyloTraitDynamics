@@ -56,11 +56,14 @@ The repository contains:
 If you use this code, please cite the associated manuscript:
 
 ```bibtex
-@article{DidierPhyloTraitDynamics,
-  author  = {Didier, Gilles},
-  title   = {Phylogenetic dynamics of MRCA ages and empirical moments of a Brownian trait},
-  year    = {2026},
-  note    = {Preprint}
+@misc{didier2026phylogeneticdynamicsmoments,
+      title={Phylogenetic dynamics of MRCA ages and empirical moments of a Brownian trait}, 
+      author={Gilles Didier},
+      year={2026},
+      eprint={2605.29736},
+      archivePrefix={arXiv},
+      primaryClass={q-bio.PE},
+      url={https://arxiv.org/abs/2605.29736}, 
 }
 ```
 
