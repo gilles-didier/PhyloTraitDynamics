@@ -2,7 +2,7 @@
 
 R code accompanying the manuscript:
 
-[**Phylogenetic dynamics of MRCA ages and empirical moments of a Brownian trait**]{https://arxiv.org/abs/2605.29736}  
+[**Phylogenetic dynamics of MRCA ages and empirical moments of a Brownian trait**](https://arxiv.org/abs/2605.29736)  
 Gilles Didier
 
 This repository contains R functions and scripts used to compute and illustrate
