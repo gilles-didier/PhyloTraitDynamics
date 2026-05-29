@@ -16,7 +16,6 @@ The package provides tools for computing:
 
 - the distributional dynamics of the empirical moments of Brownian traits evolving on a given fixed tree;
 - the distributional dynamics of the MRCA age of two uniformly sampled lineages in generalized birth-death trees;
-- the expectation and distribution of the empirical variance through time;
 - the dynamics of the variance of the empirical mean and of the expected empirical variance of a Brownian trait on generalized birth-death trees;
 - simulation-based estimates of the variance of the empirical mean and of the expected empirical variance of a Brownian trait on generalized birth-death trees;
 - various functions to plot the results;
